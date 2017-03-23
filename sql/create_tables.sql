@@ -12,7 +12,7 @@ CREATE TABLE League (
 CREATE TABLE Team (
         id SERIAL PRIMARY KEY,
         name varchar(30) NOT NULL UNIQUE,
-        ground varchar(30) NOT NULL
+        ground varchar(30)
         );
 
 CREATE TABLE LeagueTeam (
@@ -25,10 +25,12 @@ CREATE TABLE LeagueTeam (
 
 CREATE TABLE Game (
         id SERIAL PRIMARY KEY,
+        league INTEGER NOT NULL,
         home_team INTEGER NOT NULL,
         away_team INTEGER NOT NULL,
         home_goals INTEGER NOT NULL,
         away_goals INTEGER NOT NULL,
+        FOREIGN KEY(league) REFERENCES League(id),
         FOREIGN KEY(home_team) REFERENCES Team(id),
         FOREIGN KEY(away_team) REFERENCES Team(id)
         );

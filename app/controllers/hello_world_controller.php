@@ -21,4 +21,34 @@
       // Testaa koodiasi täällä
       View::make('suunnitelmat/register.html');
     }
+    
+    public static function leagues(){
+      // Testaa koodiasi täällä
+      View::make('suunnitelmat/leagues.html');
+    }
+    
+    public static function teams(){
+      // Testaa koodiasi täällä
+      View::make('suunnitelmat/teams.html');
+    }
+    
+    public static function league(){
+      // Testaa koodiasi täällä
+      View::make('suunnitelmat/league.html');
+    }
+    
+    public static function team(){
+      // Testaa koodiasi täällä
+      View::make('suunnitelmat/team.html');
+    }
+    
+    public static function editTeam(){
+      // Testaa koodiasi täällä
+      View::make('suunnitelmat/edit_team.html');
+    }
+    
+    public static function editLeague(){
+      // Testaa koodiasi täällä
+      View::make('suunnitelmat/edit_league.html');
+    }
   }
