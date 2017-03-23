@@ -3,7 +3,11 @@
     <type>org.netbeans.modules.php.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/php-project/1">
+<<<<<<< HEAD
             <name>Jalkapallotulospalvelu</name>
+=======
+            <name>Tsoha-Bootstrap</name>
+>>>>>>> 320ee3728a5647e475374219ab301d3cc365839a
         </data>
     </configuration>
 </project>
