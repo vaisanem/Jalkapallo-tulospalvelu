@@ -7,14 +7,14 @@ Yleisiä linkkejä:
 
 Sivujen linkkejä:
 
-* [1](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/sarjat)
-* [2](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/kirjaudu)
-* [3](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/rekisteroidy)
-* [4](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/joukkueet)
-* [5](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/joukkue)
-* [6](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/joukkue_muokkaus)
-* [7](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/sarja)
-* [8](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/sarja_muokkaus)
+* [Sarjojen listaus](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/sarjat)
+* [Kirjautuminen](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/kirjaudu)
+* [Rekisteröityminen](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/rekisteroidy)
+* [Joukkueiden listaus](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/joukkueet)
+* [Joukkueen esittely](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/joukkueet/1)
+* [Joukkueen muokkaus](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/joukkueet/1/muokkaa)
+* [Sarjan esittely](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/sarjat/1)
+* [Sarjan muokkaus](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu/suunnitelmat/sarjat/muokkaus)
 
 ## Työn aihe
 
