@@ -3,7 +3,7 @@
   <h1>Joukkueet</h1>
 
   <p>
-    <a href="#" class="btn btn-success">Lisää joukkue</a>
+    <a href="{{base_path}}/suunnitelmat/joukkueet/lisaa" class="btn btn-success">Lisää joukkue</a>
   </p>
 
   <table class="table table-striped table-bordered">
@@ -16,15 +16,12 @@
 
     <tbody>
       <!-- Listataan pelit tähän -->
+      {% for team in teams %}
       <tr>
-        <td><a href="#">NPS</a></td>
-        <td></td>
+        <td><a href="{{base_path}}/suunnitelmat/joukkueet/{{team.id}}">{{team.name}}</a></td>
+        <td>{{team.ground}}</td>
       </tr>
-      
-      <tr>
-        <td><a href="{{base_path}}/suunnitelmat/joukkue">Hämeen Palloilijat</a></td>
-        <td>Hämeen Stadion</td>
-      </tr>
+      {% endfor %}
     </tbody>
   </table>
 {% endblock %}

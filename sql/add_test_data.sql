@@ -1,6 +1,8 @@
 INSERT INTO League (name) VALUES ('Ykkönen');
 INSERT INTO Team (name, ground) VALUES ('NPS', 'Kenttä');
 INSERT INTO Team (name, ground) VALUES ('Hämeen Palloilijat', 'Stadion');
+INSERT INTO Team (name, ground) VALUES ('Härmän Palloilijat', 'Tekis');
+INSERT INTO Team (name) VALUES ('KiPS');
 INSERT INTO Person (name, password) VALUES ('Testi', 'Käyttäjä');
 INSERT INTO LeagueTeam (team_id, league_id) VALUES ('1', '1');
 INSERT INTO LeagueTeam (team_id, league_id) VALUES ('2', '1');

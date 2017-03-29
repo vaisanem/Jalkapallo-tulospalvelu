@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Lisää</h1>
+
+  <form method="post" action="{{base_path}}/suunnitelmat/joukkueet">
+    <div class="form-group">
+      <label>Nimi</label>
+      <input type="text" name='name' class="form-control" value="">
+    </div>
+    <div class="form-group">
+      <label>Kotikenttä</label>
+      <input type="text" name='ground' class="form-control" value="">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Tallenna</button>
+    </div>
+  </form>
+{% endblock %}

@@ -1,4 +1,5 @@
 <?php
+    require 'app/models/team.php';
 
   class HelloWorldController extends BaseController{
 
@@ -8,8 +9,9 @@
     }
 
     public static function sandbox(){
-      // Testaa koodiasi täällä
-      View::make('helloworld.html');
+        $teams = Team::all();
+        Kint::dump($teams);
+        View::make('helloworld.html');
     }
     
     public static function login(){
@@ -42,7 +44,7 @@
       View::make('suunnitelmat/team.html');
     }
     
-    public static function editTeam(){
+    public static function editTeam($id){
       // Testaa koodiasi täällä
       View::make('suunnitelmat/edit_team.html');
     }

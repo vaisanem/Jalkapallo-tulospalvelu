@@ -21,21 +21,30 @@
   });
   
   $routes->get('/suunnitelmat/joukkueet', function() {
-    HelloWorldController::teams();
+    TeamController::index();
   });
   
-  $routes->get('/suunnitelmat/sarja', function() {
+  $routes->post('/suunnitelmat/joukkueet', function() {
+    TeamController::store();
+  });
+  
+  $routes->get('/suunnitelmat/sarjat/1', function() {
     HelloWorldController::league();
   });
   
-  $routes->get('/suunnitelmat/joukkue', function() {
-    HelloWorldController::team();
+  $routes->get('/suunnitelmat/joukkueet/lisaa', function() {
+      TeamController::create();
   });
   
-  $routes->get('/suunnitelmat/joukkue_muokkaus', function() {
-    HelloWorldController::editTeam();
+  $routes->get('/suunnitelmat/joukkueet/:id/muokkaa', function($id) {
+    HelloWorldController::editTeam($id);
   });
   
-  $routes->get('/suunnitelmat/sarja_muokkaus', function() {
+  $routes->get('/suunnitelmat/joukkueet/:id', function($id) {
+      TeamController::find($id);
+  });
+  
+  
+  $routes->get('/suunnitelmat/sarjat/muokkaa', function() {
     HelloWorldController::editLeague();
   });
