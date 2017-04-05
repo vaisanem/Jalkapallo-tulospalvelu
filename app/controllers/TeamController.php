@@ -55,6 +55,6 @@ class TeamController extends BaseController {
     
     public static function destroy($id) {
         Team::destroy($id);
-        Redirect::to('/suunntelmat/joukkueet', array('message' => 'Joukkue on poistettu onnistuneesti.'));
+        Redirect::to('/suunntelmat/joukkueet/', array('message' => 'Joukkue on poistettu onnistuneesti.'));
     }
 }
