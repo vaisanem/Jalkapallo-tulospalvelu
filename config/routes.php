@@ -9,11 +9,15 @@
   });
   
   $routes->get('/suunnitelmat/kirjaudu', function() {
-    HelloWorldController::login();
+    PersonController::login();
+  });
+  
+  $routes->post('/suunnitelmat/kirjaudu', function() {
+    PersonController::handle_login();
   });
   
   $routes->get('/suunnitelmat/rekisteroidy', function() {
-    HelloWorldController::register();
+      HelloWorldController::register();
   });
   
   $routes->get('/suunnitelmat/sarjat', function() {

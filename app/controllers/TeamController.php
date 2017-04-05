@@ -28,7 +28,7 @@ class TeamController extends BaseController {
             
         } else {
             $team->save();
-            Redirect::to('/suunnitelmat/joukkueet/' . $team->id, array('message' => 'Joukkue lisätty.'));
+            Redirect::to('/suunnitelmat/joukkueet' . $team->id, array('message' => 'Joukkue lisätty.'));
         }
     }
     
@@ -49,12 +49,12 @@ class TeamController extends BaseController {
             
         } else {
             $team->update($id);
-            Redirect::to('/suunnitelmat/joukkueet/' . $id, array('message' => 'Joukkuetta muokattu.'));
+            Redirect::to('/suunnitelmat/joukkueet' . $id, array('message' => 'Joukkuetta muokattu.'));
         }
     }
     
     public static function destroy($id) {
         Team::destroy($id);
-        Redirect::to('/suunntelmat/joukkueet/', array('message' => 'Joukkue on poistettu onnistuneesti.'));
+        Redirect::to('/suunnitelmat/joukkueet', array('message' => 'Joukkue on poistettu onnistuneesti.'));
     }
 }

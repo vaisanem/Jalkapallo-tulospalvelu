@@ -12,7 +12,7 @@
         </div>
     {% endif %}
 
-    <form>
+    <form method="post" action="{{base_path}}/suunnitelmat/joukkueet/{{attributes.id}}/muokkaa">
       <div class="form-group">
         <label>Nimi</label>
         <input type="text" class="form-control" value="{{attributes.name}}">
