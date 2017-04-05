@@ -5,10 +5,13 @@
   <h1>{{team.name}}</h1>
 
   <!-- Painikkeet tähän -->
-  <p>
-    <button class="btn btn-danger">Poista</button>
+  
+    <form method="post" action="{{base_path}}/suunnitelmat/joukkueet/{{team.id}}/poista">
+        <button type="submit" class="btn btn-danger">Poista</button>
+    </form>
+    
     <a href="{{base_path}}/suunnitelmat/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
-  </p>
+  
   
   <ul>
     <li><strong>Kotikenttä: </strong>{{team.ground}}</li>

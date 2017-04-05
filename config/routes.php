@@ -28,23 +28,23 @@
     TeamController::store();
   });
   
-  $routes->get('/suunnitelmat/sarjat/1', function() {
-    HelloWorldController::league();
-  });
-  
   $routes->get('/suunnitelmat/joukkueet/lisaa', function() {
-      TeamController::create();
+    TeamController::create();
   });
   
   $routes->get('/suunnitelmat/joukkueet/:id/muokkaa', function($id) {
-    HelloWorldController::editTeam($id);
+    TeamController::edit($id);
+  });
+  
+  $routes->post('/suunnitelmat/joukkueet/:id/muokkaa', function($id) {
+    TeamController::update($id);
+  });
+  
+  $routes->post('/suunnitelmat/joukkueet/:id/poista', function($id) {
+    TeamController::destroy($id);
   });
   
   $routes->get('/suunnitelmat/joukkueet/:id', function($id) {
-      TeamController::find($id);
+    TeamController::find($id);
   });
   
-  
-  $routes->get('/suunnitelmat/sarjat/muokkaa', function() {
-    HelloWorldController::editLeague();
-  });
