@@ -2,22 +2,22 @@
 
 class Person extends BaseModel {
     
-    public $id, $username, $password;
+    public $id, $name, $password;
     
     public function __construct($attributes = null) {
         parent::__construct($attributes);
     }
     
-    public static function authenticate($username, $password) {
-        $query = DB::connection()->prepare('SELECT * FROM Person WHERE username = :username AND password = :password');
-        $query->execute(array('username' => $username, 'password' => $password));
+    public static function authenticate($name, $password) {
+        $query = DB::connection()->prepare('SELECT * FROM Person WHERE name = :name AND password = :password');
+        $query->execute(array('name' => $name, 'password' => $password));
         $row = $query->fetch();
         $person = null;
         
         if ($row) {
             $person = new Person(array(
             'id' => $row['id'],
-            'username' => $row['username'],
+            'name' => $row['name'],
             'password' => $row['password']
             ));
         }
@@ -34,7 +34,7 @@ class Person extends BaseModel {
         if ($row) {
             $person = new Person(array(
             'id' => $row['id'],
-            'username' => $row['username'],
+            'name' => $row['name'],
             'password' => $row['password']
             ));
         }
@@ -43,8 +43,8 @@ class Person extends BaseModel {
     }
 
 
-    public function validate_username() {
-        return $this->validate_string_length($this->username);
+    public function validate_name() {
+        return $this->validate_string_length($this->name);
     }
     
     public function validate_password() {

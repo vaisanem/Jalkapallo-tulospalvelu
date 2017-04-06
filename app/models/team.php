@@ -63,7 +63,7 @@ class Team extends BaseModel {
     public function validate_name() {
         $errors = $this->validate_string_length($this->name);
         
-        foreach ($this->all() as $team) {
+        foreach (Team::all() as $team) {
             if ($this->name == $team->name) {
                 $another = array('Nimi on jo käytössä.');
                 $errors = array_merge($errors, $another);

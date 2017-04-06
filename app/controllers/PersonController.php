@@ -9,11 +9,11 @@ class PersonController extends BaseController {
     public static function handle_login() {
         $params = $_POST;
         
-        $person = Person::authenticate($params['username'], $params['password']);
+        $person = Person::authenticate($params['name'], $params['password']);
         
         if (user == null) {
             View::make('/suunnitelmat/login.html', array('error' => 'Et ole olemassa.',
-                'username' => $params['username']));
+                'name' => $params['name']));
         } else {
             $_SESSION['person'] = $person->id;
             
