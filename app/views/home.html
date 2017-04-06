@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="page-header">
-    <h1>Tämä on Jalkapallotulospalvelu</h1>
-  </div>
 
-  <p>
-    Selaa olemassa olevia sarjoja, joukkueita ja tilastoja, tai kirjaudu ja luo niitä itse.
-  </p>
+    {% if message %}
+        <label>{{message}}</label>
+    {% endif %}
+
+    <div class="page-header">
+      <h1>Tämä on Jalkapallotulospalvelu</h1>
+    </div>
+
+    <p>
+      Selaa olemassa olevia sarjoja, joukkueita ja tilastoja, tai kirjaudu ja luo niitä itse.
+    </p>
 {% endblock %}

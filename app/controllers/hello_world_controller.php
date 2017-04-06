@@ -5,7 +5,7 @@
 
     public static function index(){
       // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-   	  View::make('home.html');
+   	  View::make('home.html', array('message' => $_SESSION['flash_message']));
     }
 
     public static function sandbox(){
