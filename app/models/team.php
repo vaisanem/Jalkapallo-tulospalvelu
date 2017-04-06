@@ -51,7 +51,7 @@ class Team extends BaseModel {
     }
     
     public function update($id) {
-        $query = DB::connection()->prepare('UPDATE Team SET (name = :name, ground = :ground) WHERE id = :id');
+        $query = DB::connection()->prepare('UPDATE Team SET name = :name, ground = :ground WHERE id = :id');
         $query->execute(array('name' => $this->name, 'ground' => $this->ground, 'id' => $id));
     }
     
@@ -64,7 +64,7 @@ class Team extends BaseModel {
         $errors = $this->validate_string_length($this->name);
         
         foreach (Team::all() as $team) {
-            if ($this->name == $team->name) {
+            if ($this->name == $team->name && $this->id != $team->id) {
                 $another = array('Nimi on jo käytössä.');
                 $errors = array_merge($errors, $another);
                 break;

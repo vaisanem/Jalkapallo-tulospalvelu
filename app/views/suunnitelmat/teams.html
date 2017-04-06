@@ -1,6 +1,10 @@
  {% extends "base.html" %}
 {% block content %}
   <h1>Joukkueet</h1>
+  
+  {% if message %}
+    <label>{{message}}</label>
+  {%endif %}
 
   <p>
     <a href="{{base_path}}/suunnitelmat/joukkueet/lisaa" class="btn btn-success">Lisää joukkue</a>

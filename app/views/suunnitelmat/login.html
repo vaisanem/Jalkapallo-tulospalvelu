@@ -3,9 +3,9 @@
     <h1>Kirjaudu sisään</h1>
   
     {% if error %}
-    <label>
-        {{error}}
-    </label>
+    <div class="alert alert-danger">
+        <label>{{error}}</label>
+    </div>
     {% endif %}
 
     <!-- Kaikki lomakkeen elementit form-tagin sisään -->

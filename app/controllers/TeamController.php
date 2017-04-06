@@ -39,7 +39,7 @@ class TeamController extends BaseController {
     
     public static function update($id) {
         $params = $_POST;
-        $attributes = array('name' => $params['name'], 'ground' => $params['ground']);
+        $attributes = array('id' => $id, 'name' => $params['name'], 'ground' => $params['ground']);
         $team = new Team($attributes);
         
         $errors = $team->errors();
