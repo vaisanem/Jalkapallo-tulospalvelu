@@ -11,7 +11,7 @@ class PersonController extends BaseController {
         
         $person = Person::authenticate($params['name'], $params['password']);
         
-        if (user == null) {
+        if ($person == null) {
             View::make('/suunnitelmat/login.html', array('error' => 'Et ole olemassa.',
                 'name' => $params['name']));
         } else {

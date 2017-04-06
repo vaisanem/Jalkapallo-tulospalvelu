@@ -24,7 +24,7 @@ class TeamController extends BaseController {
         $errors = $team->errors();
         
         if (count($errors) > 0) {
-            View::make('suunnitelmat/add_team.html', $errors, $attributes);
+            View::make('suunnitelmat/add_team.html', array('errors' => $errors, 'attributes' => $attributes));
             
         } else {
             $team->save();
@@ -45,7 +45,7 @@ class TeamController extends BaseController {
         $errors = $team->errors();
         
         if (count($errors) > 0) {
-            View::make('suunnitelmat/edit_team.html', $errors, $attributes);
+            View::make('suunnitelmat/edit_team.html', array('errors' => $errors, 'attributes' => $attributes));
             
         } else {
             $team->update($id);
