@@ -9,6 +9,10 @@
             {% endfor %}
         </div>
     {% endif %}
+    
+    {% if message %}
+        <label>{{message}}</label>
+    {%endif %}
 
     <form method="post" action="{{base_path}}/suunnitelmat/joukkueet/{{attributes.id}}/muokkaa">
       <div class="form-group">

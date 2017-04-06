@@ -24,6 +24,14 @@
     HelloWorldController::leagues();
   });
   
+  $routes->get('/suunnitelmat/sarjat/1', function() {
+    HelloWorldController::league();
+  });
+  
+  $routes->get('/suunnitelmat/sarjat/1/muokkaa', function() {
+    HelloWorldController::editLeague();
+  });
+  
   $routes->get('/suunnitelmat/joukkueet', function() {
     TeamController::index();
   });
