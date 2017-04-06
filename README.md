@@ -1,4 +1,8 @@
-# Tietokantasovelluksen esittelysivu
+# Tietokantasovelluksen esittelysivu  
+  
+Kirjautumisen läpäisee:   
+Käyttäjätunnus: Testi  
+Salasana: Käyttäjä  
 
 Yleisiä linkkejä:
 
