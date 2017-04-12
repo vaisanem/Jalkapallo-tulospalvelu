@@ -17,15 +17,19 @@
   });
   
   $routes->get('/suunnitelmat/rekisteroidy', function() {
-      HelloWorldController::register();
+      PersonController::register();
+  });
+  
+  $routes->post('/suunnitelmat/rekisteroidy', function() {
+      PersonController::handle_register();
   });
   
   $routes->get('/suunnitelmat/sarjat', function() {
-    HelloWorldController::leagues();
+      LeagueController::index();
   });
   
-  $routes->get('/suunnitelmat/sarjat/1', function() {
-    HelloWorldController::league();
+  $routes->get('/suunnitelmat/sarjat/:id', function($id) {
+      LeagueController::
   });
   
   $routes->get('/suunnitelmat/sarjat/1/muokkaa', function() {

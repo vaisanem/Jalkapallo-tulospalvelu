@@ -16,10 +16,12 @@
 
     <tbody>
       <!-- Listataan sarjat tähän -->
+      {% for league in leagues %}
       <tr>
-        <td><a href="{{base_path}}/suunnitelmat/sarjat/1">Ykkönen</a></td>
+        <td><a href="{{base_path}}/suunnitelmat/sarjat/{{league.id}}">{{league.name}}</a></td>
         <td></td>
       </tr>
+      {% endfor %}
     </tbody>
   </table>
 {% endblock %}

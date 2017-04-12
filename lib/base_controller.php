@@ -5,6 +5,7 @@
     public static function get_user_logged_in(){
         if (isset($_SESSION['person'])) {
             $id = $_SESSION['person'];
+            $attribute = 'id';
             $person = Person::find($id);
             return $person;
         }
