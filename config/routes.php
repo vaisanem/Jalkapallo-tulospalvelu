@@ -29,7 +29,7 @@
   });
   
   $routes->get('/suunnitelmat/sarjat/:id', function($id) {
-      LeagueController::
+      LeagueController::find($id);
   });
   
   $routes->get('/suunnitelmat/sarjat/1/muokkaa', function() {

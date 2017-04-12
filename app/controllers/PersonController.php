@@ -42,7 +42,7 @@ class PersonController extends BaseController {
             
         } else {
             $person->register();
-            Redirect::to('/', array('message' => 'Sinut on rekisteröity.'));
+            Redirect::to('/', array('message' => 'Sinut on rekisteröity. Ylläpitäjä antaa sinulle muokkausoikeudet piakkoin, ehkä.'));
         }
     }
     
