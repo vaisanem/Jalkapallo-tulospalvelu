@@ -42,8 +42,12 @@
             <li><a href="{{base_path}}">Etusivu</a></li>
             <li><a href="{{base_path}}/suunnitelmat/sarjat">Sarjat</a></li>
             <li><a href="{{base_path}}/suunnitelmat/joukkueet">Joukkueet</a></li>
+            {% if user_logged_in %}
+                <li><a href="{{base_path}}/suunnitelmat/asetukset">Asetukset</a></li>
+            {% else %}
             <li><a href="{{base_path}}/suunnitelmat/kirjaudu">Kirjaudu</a></li>
             <li><a href="{{base_path}}/suunnitelmat/rekisteroidy">Rekisteröidy</a></li>
+            {% endif %}
             <li><a href="{{base_path}}/tietokantayhteys">(Tietokantayhteys)</a></li>
           </ul>
         </div>

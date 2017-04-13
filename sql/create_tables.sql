@@ -2,7 +2,7 @@ CREATE TABLE Person (
         id SERIAL PRIMARY KEY,
         name varchar(30) NOT NULL UNIQUE,
         password varchar(30) NOT NULL,
-        mode boolean DEFAULT FALSE
+        mode integer DEFAULT 0
         );
 
 CREATE TABLE League (

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+  
+  <h1>{{user_logged_in.name}}</h1>
+
+  <!-- Painikkeet tähän -->
+  
+    <form method="post" action="{{base_path}}/suunnitelmat/kirjaudu/ulos">
+        <button type="submit" class="btn btn-danger">Kirjaudu ulos</button>
+    </form>
+  
+  
+  <ul>
+      {% if (user_logged_in.mode == 0) %}
+    <li>Et ole saanut muokkausoikeuksia.</li>
+      {% else }
+      <li>Tähän tulee käyttäjätietojen hallinta.</li>
+      {% endif %}
+  </ul>

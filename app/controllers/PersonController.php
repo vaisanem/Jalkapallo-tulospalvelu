@@ -23,6 +23,7 @@ class PersonController extends BaseController {
     
     public static function logout() {
         $_SESSION['person'] = null;
+        Redirect::to('/', array('message' => 'Olet kirjautunut ulos.'));
     }
     
     public static function register() {
@@ -44,6 +45,11 @@ class PersonController extends BaseController {
             $person->register();
             Redirect::to('/', array('message' => 'Sinut on rekisteröity. Ylläpitäjä antaa sinulle muokkausoikeudet piakkoin, ehkä.'));
         }
+    }
+    
+    public static function settings() {
+        self::check_logged_in();
+        View::make('suunnitelmat/settings.html');
     }
     
 }

@@ -33,6 +33,7 @@ class TeamController extends BaseController {
     }
     
     public static function edit($id) {
+        self::check_logged_in();
         $team = Team::find($id);
         View::make('/suunnitelmat/edit_team.html', array('attributes' => $team));
     }

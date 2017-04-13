@@ -16,12 +16,20 @@
     PersonController::handle_login();
   });
   
+  $routes->post('/suunnitelmat/kirjaudu/ulos', function() {
+    PersonController::logout();
+  });
+  
   $routes->get('/suunnitelmat/rekisteroidy', function() {
       PersonController::register();
   });
   
   $routes->post('/suunnitelmat/rekisteroidy', function() {
       PersonController::handle_register();
+  });
+  
+  $routes->get('/suunnitelmat/asetukset', function() {
+      PersonController::settings();
   });
   
   $routes->get('/suunnitelmat/sarjat', function() {

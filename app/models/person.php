@@ -6,7 +6,7 @@ class Person extends BaseModel {
     
     public function __construct($attributes = null) {
         parent::__construct($attributes);
-        $this->mode = false;
+        $this->mode = 0;
         $this->validators = array('validate_name', 'validate_password');
     }
     
@@ -64,7 +64,7 @@ class Person extends BaseModel {
         return $person;
     }
     
-    public static function register() {
+    public function register() {
         $query = DB::connection()->prepare('INSERT INTO Person (name, password) VALUES (:name, :password) RETURNING id');
         $query->execute(array('name' => $this->name, 'password' => $this->password));
         $row = $query->fetch();
