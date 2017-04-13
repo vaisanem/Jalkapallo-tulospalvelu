@@ -77,7 +77,7 @@
   });
   
   $routes->post('/joukkueet/:id/lisaa/sarjaan', function($id) {
-    TeamController
+    TeamController::add_to_league($id);
   });
   
   $routes->get('/joukkueet/:id', function($id) {
