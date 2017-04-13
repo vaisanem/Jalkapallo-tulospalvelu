@@ -60,6 +60,11 @@ class Team extends BaseModel {
         $query->execute(array('id' => $id));
     }
     
+    public function add_to_league($id) {
+        $query = DB::connection()->prepare('INSERT INTO LeagueTeam (team_id, league_id) VALUES (:team_id, :league_id)');
+        $query->execute(array('team_id' => $this->id, 'league_id' => $id));
+    }
+    
     public function validate_name() {
         $errors = $this->validate_string_length($this->name);
         

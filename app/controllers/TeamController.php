@@ -9,7 +9,8 @@ class TeamController extends BaseController {
     
     public static function find($id) {
         $team = Team::find($id);
-        View::make('team/team.html',array('team' => $team));
+        $leagues = League::all();
+        View::make('team/team.html',array('team' => $team, 'leagues' => $leagues));
     }
     
     public static function create() {
@@ -58,5 +59,12 @@ class TeamController extends BaseController {
     public static function destroy($id) {
         Team::destroy($id);
         Redirect::to('/joukkueet', array('message' => 'Joukkue on poistettu onnistuneesti.'));
+    }
+    
+    public static function add_to_league($id) {
+        $league_id = $_POST['league'];
+        $team = Team::find($id);
+        $team->add_to_league($league_id);
+        Redirect::to('/joukkueet/' . $id);
     }
 }

@@ -7,23 +7,28 @@
   <!-- Painikkeet tähän -->
   
   {% if user_logged_in %}
-    {% if (user_logged_in.mode == 1) %}
+    {% if user_logged_in.mode is same as(1) %}
         <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/poista">
             <button type="submit" class="btn btn-danger">Poista</button>
         </form>
 
         <a href="{{base_path}}/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
         
-        <aside>
-            <h2>Lisää sarjaan</h2>
-            <input list="leagues">
-
-            <datalist id="leagues">
+        <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/lisaa/sarjaan">
+            
+            <div class="form-group">
+              <label>Lisää sarjaan</label>
+              <select class="form-control" name="league">
                 {% for league in leagues %}
-              <option value="{{league.name}}">
+                  <option value="{{league.id}}">{{league.name}}</option>
                 {% endfor %}
-              </datalist>
-        </aside>
+              </select>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Lisää</button>
+            </div>
+        </form>
     {% endif %}    
   {% endif %}    
   

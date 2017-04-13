@@ -11,7 +11,7 @@
     </form>
   
   
-    {% if user_logged_in.mode == 0 %}
+    {% if user_logged_in.mode is same as(0) %}
         <li>Et ole saanut muokkausoikeuksia.</li>
     {% else %}
         <table class="table table-striped table-bordered">
@@ -27,7 +27,7 @@
               <tr>
                 <td>{{person.name}}</td>
                 <td>
-                    {% if person.mode == 0 %}
+                    {% if person.mode is same as(0) %}
                         <form method="post" action="{{base_path}}/oikeudet/{{person.id}}/anna">
                             <input type="submit" value="Anna" />
                         </form>

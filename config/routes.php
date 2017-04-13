@@ -76,6 +76,10 @@
     TeamController::destroy($id);
   });
   
+  $routes->post('/joukkueet/:id/lisaa/sarjaan', function($id) {
+    TeamController
+  });
+  
   $routes->get('/joukkueet/:id', function($id) {
     TeamController::find($id);
   });
