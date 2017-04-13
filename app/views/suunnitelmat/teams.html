@@ -6,9 +6,13 @@
     <label>{{message}}</label>
   {%endif %}
 
-  <p>
-    <a href="{{base_path}}/suunnitelmat/joukkueet/lisaa" class="btn btn-success">Lisää joukkue</a>
-  </p>
+  {% if user_logged_in %}
+    {% if (user_logged_in.mode == 1) %}
+        <p>
+          <a href="{{base_path}}/suunnitelmat/joukkueet/lisaa" class="btn btn-success">Lisää joukkue</a>
+        </p>
+    {% endif %}    
+  {% endif %}    
 
   <table class="table table-striped table-bordered">
     <thead>

@@ -32,6 +32,14 @@
       PersonController::settings();
   });
   
+  $routes->post('/suunnitelmat/oikeudet/:id/anna', function($id) {
+      PersonController::give_rights($id);
+  });
+  
+  $routes->post('/suunnitelmat/oikeudet/:id/poista', function($id) {
+      PersonController::take_rights($id);
+  });
+  
   $routes->get('/suunnitelmat/sarjat', function() {
       LeagueController::index();
   });

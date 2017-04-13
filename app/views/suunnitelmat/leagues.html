@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Sarjat</h1>
-
-  <p>
-    <a href="#" class="btn btn-success">Lisää sarja</a>
-  </p>
+  
+  {% if user_logged_in %}
+    {% if (user_logged_in.mode == 1) %}
+        <p>
+          <a href="#" class="btn btn-success">Lisää sarja</a>
+        </p>
+    {% endif %}
+  {% endif %}
+  
 
   <table class="table table-striped table-bordered">
     <thead>

@@ -13,6 +13,7 @@ class TeamController extends BaseController {
     }
     
     public static function create() {
+        self::check_logged_in();
         View::make('suunnitelmat/add_team.html');
     }
     

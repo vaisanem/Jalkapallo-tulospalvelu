@@ -6,28 +6,32 @@
 
   <!-- Painikkeet tähän -->
   
-    <form method="post" action="{{base_path}}/suunnitelmat/joukkueet/{{team.id}}/poista">
-        <button type="submit" class="btn btn-danger">Poista</button>
-    </form>
-    
-    <a href="{{base_path}}/suunnitelmat/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
+  {% if user_logged_in %}
+    {% if (user_logged_in.mode == 1) %}
+        <form method="post" action="{{base_path}}/suunnitelmat/joukkueet/{{team.id}}/poista">
+            <button type="submit" class="btn btn-danger">Poista</button>
+        </form>
+
+        <a href="{{base_path}}/suunnitelmat/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
+        
+        <aside>
+            <h2>Lisää sarjaan</h2>
+            <input list="leagues">
+
+            <datalist id="leagues">
+                {% for league in leagues %}
+              <option value="{{league.name}}">
+                {% endfor %}
+              </datalist>
+        </aside>
+    {% endif %}    
+  {% endif %}    
   
   
   <ul>
     <li><strong>Kotikenttä: </strong>{{team.ground}}</li>
   </ul>
     
-    
-  
-  <aside>
-      <h2>Lisää sarjaan</h2>
-      <input list="leagues">
 
-      <datalist id="leagues">
-          {% for league in leagues %}
-        <option value="{{league.name}}">
-          {% endfor %}
-        </datalist>
-  </aside>
   
 {% endblock %}
