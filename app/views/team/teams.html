@@ -9,7 +9,7 @@
   {% if user_logged_in %}
     {% if (user_logged_in.mode == 1) %}
         <p>
-          <a href="{{base_path}}/suunnitelmat/joukkueet/lisaa" class="btn btn-success">Lisää joukkue</a>
+          <a href="{{base_path}}/joukkueet/lisaa" class="btn btn-success">Lisää joukkue</a>
         </p>
     {% endif %}    
   {% endif %}    
@@ -26,7 +26,7 @@
       <!-- Listataan pelit tähän -->
       {% for team in teams %}
       <tr>
-        <td><a href="{{base_path}}/suunnitelmat/joukkueet/{{team.id}}">{{team.name}}</a></td>
+        <td><a href="{{base_path}}/joukkueet/{{team.id}}">{{team.name}}</a></td>
         <td>{{team.ground}}</td>
       </tr>
       {% endfor %}

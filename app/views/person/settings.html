@@ -6,7 +6,7 @@
 
   <!-- Painikkeet tähän -->
   
-    <form method="post" action="{{base_path}}/suunnitelmat/kirjaudu/ulos">
+    <form method="post" action="{{base_path}}/kirjaudu/ulos">
         <button type="submit" class="btn btn-danger">Kirjaudu ulos</button>
     </form>
   
@@ -28,11 +28,11 @@
                 <td>{{person.name}}</td>
                 <td>
                     {% if (person.mode == 0) %}
-                        <form method="post" action="{{base_path}}/suunnitelmat/oikeudet/{{person.id}}/anna">
+                        <form method="post" action="{{base_path}}/oikeudet/{{person.id}}/anna">
                             <input type="submit" value="Anna" />
                         </form>
                     {% else %}
-                        <form method="post" action="{{base_path}}/suunnitelmat/oikeudet/{{person.id}}/poista">
+                        <form method="post" action="{{base_path}}/oikeudet/{{person.id}}/poista">
                             <input type="submit" value="Poista"/>
                         </form>
                     {% endif %}
@@ -42,3 +42,4 @@
             </tbody>
         </table>
     {% endif %}
+{% endblock %}    

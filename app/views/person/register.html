@@ -2,14 +2,18 @@
 {% block content %}
   <h1>Rekisteröidy</h1>
   
-  {% if error %}
+  {% if errors %}
     <div class="alert alert-danger">
-        <label>{{error}}</label>
+          
+        {% for error in errors %}
+            <label>{{error}}</label>
+        {% endfor %}
+          
     </div>
   {% endif %}
 
   <!-- Kaikki lomakkeen elementit form-tagin sisään -->
-  <form method="post" action="{{base_path}}/suunnitelmat/rekisteroidy">
+  <form method="post" action="{{base_path}}/rekisteroidy">
     <!-- Tekstikenttä käyttäjätunnukselle -->
     <div class="form-group">
       <label>Käyttäjätunnus</label>

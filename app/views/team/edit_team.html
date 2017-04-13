@@ -14,7 +14,7 @@
         <label>{{message}}</label>
     {%endif %}
 
-    <form method="post" action="{{base_path}}/suunnitelmat/joukkueet/{{attributes.id}}/muokkaa">
+    <form method="post" action="{{base_path}}/joukkueet/{{attributes.id}}/muokkaa">
       <div class="form-group">
         <label>Nimi</label>
         <input type="text" name="name" class="form-control" value="{{attributes.name}}">

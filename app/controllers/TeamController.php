@@ -4,17 +4,17 @@ class TeamController extends BaseController {
     
     public static function index() {
         $teams = team::all();
-        View::make('suunnitelmat/teams.html', array('teams' => $teams));
+        View::make('team/teams.html', array('teams' => $teams));
     }
     
     public static function find($id) {
         $team = Team::find($id);
-        View::make('suunnitelmat/team.html',array('team' => $team));
+        View::make('team/team.html',array('team' => $team));
     }
     
     public static function create() {
         self::check_logged_in();
-        View::make('suunnitelmat/add_team.html');
+        View::make('team/add_team.html');
     }
     
     public static function store() {
@@ -25,18 +25,18 @@ class TeamController extends BaseController {
         $errors = $team->errors();
         
         if (count($errors) > 0) {
-            View::make('suunnitelmat/add_team.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('team/add_team.html', array('errors' => $errors, 'attributes' => $attributes));
             
         } else {
             $team->save();
-            Redirect::to('/suunnitelmat/joukkueet/' . $team->id, array('message' => 'Joukkue lisätty.'));
+            Redirect::to('/joukkueet/' . $team->id, array('message' => 'Joukkue lisätty.'));
         }
     }
     
     public static function edit($id) {
         self::check_logged_in();
         $team = Team::find($id);
-        View::make('/suunnitelmat/edit_team.html', array('attributes' => $team));
+        View::make('team/edit_team.html', array('attributes' => $team));
     }
     
     public static function update($id) {
@@ -47,16 +47,16 @@ class TeamController extends BaseController {
         $errors = $team->errors();
         
         if (count($errors) > 0) {
-            View::make('suunnitelmat/edit_team.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('team/edit_team.html', array('errors' => $errors, 'attributes' => $attributes));
             
         } else {
             $team->update($id);
-            Redirect::to('/suunnitelmat/joukkueet/' . $id, array('message' => 'Joukkuetta muokattu.'));
+            Redirect::to('/joukkueet/' . $id, array('message' => 'Joukkuetta muokattu.'));
         }
     }
     
     public static function destroy($id) {
         Team::destroy($id);
-        Redirect::to('/suunnitelmat/joukkueet', array('message' => 'Joukkue on poistettu onnistuneesti.'));
+        Redirect::to('/joukkueet', array('message' => 'Joukkue on poistettu onnistuneesti.'));
     }
 }

@@ -3,7 +3,7 @@
 class PersonController extends BaseController {
     
     public static function login() {
-        View::make('/suunnitelmat/login.html');
+        View::make('person/login.html');
     }
     
     public static function handle_login() {
@@ -12,7 +12,7 @@ class PersonController extends BaseController {
         $person = Person::authenticate($params['name'], $params['password']);
         
         if ($person == null) {
-            View::make('/suunnitelmat/login.html', array('error' => 'Yritä uudelleen.',
+            View::make('person/login.html', array('error' => 'Yritä uudelleen.',
                 'name' => $params['name']));
         } else {
             $_SESSION['person'] = $person->id;
@@ -27,7 +27,7 @@ class PersonController extends BaseController {
     }
     
     public static function register() {
-        View::make('suunnitelmat/register.html');
+        View::make('person/register.html');
     }
     
     public static function handle_register() {
@@ -39,7 +39,7 @@ class PersonController extends BaseController {
         $errors = $person->errors();
         
         if (count($errors) > 0) {
-            View::make('suunnitelmat/register.html', array('errors' => $errors, 'attributes' => $attributes));
+            View::make('person/register.html', array('errors' => $errors, 'attributes' => $attributes));
             
         } else {
             $person->register();
@@ -50,7 +50,7 @@ class PersonController extends BaseController {
     public static function settings() {
         self::check_logged_in();
         $persons = Person::all();
-        View::make('suunnitelmat/settings.html', array('persons' => $persons));
+        View::make('person/settings.html', array('persons' => $persons));
     }
     
     public static function give_rights($id) {

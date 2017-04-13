@@ -8,11 +8,11 @@
   
   {% if user_logged_in %}
     {% if (user_logged_in.mode == 1) %}
-        <form method="post" action="{{base_path}}/suunnitelmat/joukkueet/{{team.id}}/poista">
+        <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/poista">
             <button type="submit" class="btn btn-danger">Poista</button>
         </form>
 
-        <a href="{{base_path}}/suunnitelmat/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
+        <a href="{{base_path}}/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
         
         <aside>
             <h2>Lisää sarjaan</h2>
