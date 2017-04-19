@@ -3,7 +3,7 @@
   <h1>Sarjat</h1>
   
   {% if user_logged_in %}
-    {% if user_logged_in.mode == 1 %}
+    {% if user_logged_in.mode != 0 %}
         <p>
           <a href="#" class="btn btn-success">Lisää sarja</a>
         </p>

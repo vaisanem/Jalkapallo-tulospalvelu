@@ -6,7 +6,6 @@ class Person extends BaseModel {
     
     public function __construct($attributes = null) {
         parent::__construct($attributes);
-        $this->mode = 0;
         $this->validators = array('validate_name', 'validate_password');
     }
     

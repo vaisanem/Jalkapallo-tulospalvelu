@@ -7,7 +7,7 @@
   <!-- Painikkeet tähän -->
   
   {% if user_logged_in %}
-    {% if user_logged_in.mode is same as(1) %}
+    {% if user_logged_in.mode == 1 %}
         <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/poista">
             <button type="submit" class="btn btn-danger">Poista</button>
         </form>

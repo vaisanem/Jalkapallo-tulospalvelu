@@ -7,7 +7,7 @@
   {%endif %}
 
   {% if user_logged_in %}
-    {% if (user_logged_in.mode == 1) %}
+    {% if user_logged_in.mode != 0 %}
         <p>
           <a href="{{base_path}}/joukkueet/lisaa" class="btn btn-success">Lisää joukkue</a>
         </p>
