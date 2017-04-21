@@ -10,7 +10,8 @@ class TeamController extends BaseController {
     public static function find($id) {
         $team = Team::find($id);
         $leagues = League::all();
-        View::make('team/team.html',array('team' => $team, 'leagues' => $leagues));
+        $games = Game::teams_games($id);
+        View::make('team/team.html',array('team' => $team, 'leagues' => $leagues, 'games' => $games));
     }
     
     public static function create() {
