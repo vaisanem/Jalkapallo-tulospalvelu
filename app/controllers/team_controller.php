@@ -68,3 +68,4 @@ class TeamController extends BaseController {
         Redirect::to('/joukkueet/' . $id);
     }
 }
+

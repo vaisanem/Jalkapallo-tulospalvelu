@@ -8,11 +8,16 @@
   
   {% if user_logged_in %}
     {% if user_logged_in.mode == 1 %}
-        <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/poista">
-            <button type="submit" class="btn btn-danger">Poista</button>
-        </form>
+        <p>
+            <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/poista">
+                <button type="submit" class="btn btn-danger">Poista</button>
+            </form>
+            <a href="{{base_path}}/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
+        </p>
 
-        <a href="{{base_path}}/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
+        <ul>
+            <li><strong>Kotikenttä: </strong>{{team.ground}}</li>
+        </ul>
         
         <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/lisaa/sarjaan">
             
@@ -30,13 +35,20 @@
             </div>
         </form>
     {% endif %}    
-  {% endif %}    
+  {% endif %}
   
-  
-  <ul>
-    <li><strong>Kotikenttä: </strong>{{team.ground}}</li>
-  </ul>
-    
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Leagues')">Sarjat</button>
+    <button class="tablinks" onclick="openCity(event, 'Games')">Ottelut</button>
+  </div>
+
+  <div id="Leagues" class="tabcontent">
+    <p>Tähän tulevat joukkueen sarjat</p>
+  </div>
+
+  <div id="Games" class="tabcontent">
+    <p>Tähän tulevat joukkueen ottelut</p>
+  </div>
 
   
 {% endblock %}

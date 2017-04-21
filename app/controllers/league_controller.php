@@ -12,3 +12,4 @@ class LeagueController extends BaseController {
         View::make('league/league.html', array('league' => $league));
     }
 }
+

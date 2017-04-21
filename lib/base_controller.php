@@ -13,7 +13,7 @@
 
     public static function check_logged_in(){
         if (!isset($_SESSION['person'])) {
-            Redirect::to('/suunnitelmat/kirjaudu', array('message' => 'Sinun on kirjauduttava ensin.'));
+            Redirect::to('/kirjaudu', array('message' => 'Sinun on kirjauduttava ensin.'));
         }
     }
 

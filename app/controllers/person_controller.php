@@ -55,14 +55,17 @@ class PersonController extends BaseController {
     
     public static function give_rights($id) {
         $person = Person::find($id);
-        $person->give_rights();
-        self::settings();
+        $rights = 1;
+        $person->rights($rights);
+        Redirect::to('/asetukset');
     }
     
     public static function take_rights($id) {
         $person = Person::find($id);
-        $person->take_rights();
-        self::settings();
+        $rights = 0;
+        $person->rights($rights);
+        Redirect::to('/asetukset');
     }
     
 }
+

@@ -70,14 +70,9 @@ class Person extends BaseModel {
         $this->id = $row['id'];
     }
     
-    public function give_rights() {
+    public function rights($rights) {
         $query = DB::connection()->prepare('UPDATE Person SET mode = :mode WHERE id = :id');
-        $query->execute(array('mode' => 1, 'id' => $this->id));
-    }
-    
-    public function take_rights() {
-        $query = DB::connection()->prepare('UPDATE Person SET mode = :mode WHERE id = :id');
-        $query->execute(array('mode' => 0, 'id' => $this->id));
+        $query->execute(array('mode' => $rights, 'id' => $this->id));
     }
 
     public function validate_name() {

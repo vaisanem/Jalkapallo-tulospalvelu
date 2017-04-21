@@ -8,4 +8,17 @@
     <button class="btn btn-success">Lisää ottelutulos</button>
   </p>
   
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Table')">Sarjataulukko</button>
+    <button class="tablinks" onclick="openCity(event, 'Games')">Ottelut</button>
+  </div>
+
+  <div id="Table" class="tabcontent">
+    <p>Tähän tulee sarjan sarjataulukko</p>
+  </div>
+
+  <div id="Games" class="tabcontent">
+    <p>Tähän tulevat sarjan ottelut</p>
+  </div>
+  
 {% endblock %}
