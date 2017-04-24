@@ -1,8 +1,8 @@
 <?php
 
-class game extends BaseModel {
+class Game extends BaseModel {
     
-    public $id, $league, $home_team, $away_team, $home_goals, $away_goals;
+    public $id, $league, $league_name, $home_name, $away_name, $home_goals, $away_goals;
     
     public function __construct($attributes = null) {
         parent::__construct($attributes);
@@ -15,14 +15,19 @@ class game extends BaseModel {
         $games = array();
 
         foreach($rows as $row){
-          $games[] = new Game(array(
+          $game = new Game(array(
             'id' => $row['id'],
             'league' => $row['league'],
-            'home_team' => $row['home_team'],
-            'away_team' => $row['away_team'],
             'home_goals' => $row['home_goals'],
             'away_goals' => $row['away_goals']
           ));
+          $league = League::find($row['league']);
+          $home_team = Team::find($row['home_team']);
+          $away_team = Team::find($row['away_team']);
+          $game->league_name = $league->name;
+          $game->home_name = $home_team->name;
+          $game->away_name = $away_team->name;
+          $games[] = $game;
         }
 
         return $games;

@@ -52,8 +52,8 @@
           <!-- Listataan pelit tähän -->
           {% for game in games %}
           <tr>
-            <td><a href="{{base_path}}/sarjat/{{game.league}}">Sarjan nimi</a></td>
-            <td>{{game.home_team}} - {{game.away_team}}</td>
+            <td><a href="{{base_path}}/sarjat/{{game.league}}">{{game.league_name}}</a></td>
+            <td>{{game.home_name}} - {{game.away_name}}</td>
             <td>{{game.home_goals}} - {{game.away_goals}}</td>
           </tr>
           {% endfor %}
