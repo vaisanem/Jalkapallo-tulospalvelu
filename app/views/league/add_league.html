@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Lisää</h1>
+  
+    {% if errors %}
+        <div class="alert alert-danger">
+          
+            {% for error in errors %}
+              <label>{{error}}</label>
+            {% endfor %}
+          
+        </div>
+      {% endif %}
+
+    <form method="post" action="{{base_path}}/sarjat">
+        <div class="form-group">
+            <label>Nimi</label>
+            <input type="text" name='name' class="form-control" value="{{attributes.name}}">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Tallenna</button>
+        </div>
+    </form>
+{% endblock %}
+

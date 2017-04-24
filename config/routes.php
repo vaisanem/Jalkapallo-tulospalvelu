@@ -44,12 +44,24 @@
       LeagueController::index();
   });
   
-  $routes->get('/sarjat/:id', function($id) {
-      LeagueController::find($id);
+  $routes->post('/sarjat', function() {
+      LeagueController::store();
   });
   
-  $routes->get('/sarjat/1/muokkaa', function() {
-    HelloWorldController::editLeague();
+  $routes->get('/sarjat/:id/muokkaa', function($id) {
+      LeagueController::edit($id);
+  });
+  
+  $routes->post('/sarjat/:id/muokkaa', function($id) {
+      LeagueController::update($id);
+  });
+  
+  $routes->post('/sarjat/:id/poista', function($id) {
+      LeagueController::destroy($id);
+  });
+  
+  $routes->get('/sarjat/:id', function($id) {
+      LeagueController::find($id);
   });
   
   $routes->get('/joukkueet', function() {
@@ -66,6 +78,10 @@
   
   $routes->get('/joukkueet/:id/muokkaa', function($id) {
     TeamController::edit($id);
+  });
+  
+  $routes->get('/joukkueet/:id/ottelut', function($id) {
+      GameController::teams_games($id);
   });
   
   $routes->post('/joukkueet/:id/muokkaa', function($id) {

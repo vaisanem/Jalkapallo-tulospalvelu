@@ -2,23 +2,19 @@
 {% block content %}
   <h1>{{league.name}}</h1>
   <!-- Painikkeet tähän -->
+  {% if user_logged_in %}
+    {% if user_logged_in.mode > 0 %}
   <p>
-    <button class="btn btn-danger">Poista</button>
-    <a href="{{base_path}}/sarjat/1/muokkaa" class="btn btn-default">Muokkaa</a>
+  <form method="post" action="{{base_path}}/sarjat/{{league.id}}/poista">
+      <button type="submit" class="btn btn-danger">Poista</button>
+  </form>
+    <a href="{{base_path}}/sarjat/{{league.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
     <button class="btn btn-success">Lisää ottelutulos</button>
+    <button class="btn btn-info">Otteluhistoria</button>
   </p>
+    {% endif %}
+  {% endif %}  
   
-  <div class="tab">
-    <button class="tablinks" onclick="openCity(event, 'Table')">Sarjataulukko</button>
-    <button class="tablinks" onclick="openCity(event, 'Games')">Ottelut</button>
-  </div>
-
-  <div id="Table" class="tabcontent">
-    <p>Tähän tulee sarjan sarjataulukko</p>
-  </div>
-
-  <div id="Games" class="tabcontent">
-    <p>Tähän tulevat sarjan ottelut</p>
-  </div>
+  
   
 {% endblock %}

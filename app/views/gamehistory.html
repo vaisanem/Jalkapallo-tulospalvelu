@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+
+  
+  <h1>{{name}}</h1>
+  
+  
+  <h2>Ottelut</h2>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Sarja</th>
+            <th>Ottelu</th>
+            <th>Tulos</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- Listataan pelit tähän -->
+          {% for game in games %}
+          <tr>
+            <td><a href="{{base_path}}/sarjat/{{game.league}}">{{game.league_name}}</a></td>
+            <td>{{game.home_name}} - {{game.away_name}}</td>
+            <td style="background-color:red">{{game.home_goals}} - {{game.away_goals}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+  
+{% endblock %}
