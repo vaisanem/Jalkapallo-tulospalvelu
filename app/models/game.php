@@ -2,7 +2,7 @@
 
 class Game extends BaseModel {
     
-    public $id, $league, $league_name, $home_name, $away_name, $home_goals, $away_goals;
+    public $id, $league, $league_name, $home_name, $away_name, $home_goals, $away_goals, $win, $loss;
     
     public function __construct($attributes = null) {
         parent::__construct($attributes);
@@ -15,11 +15,13 @@ class Game extends BaseModel {
         $games = array();
 
         foreach($rows as $row){
+          $home_goals = $row['home_goals'];
+          $away_goals = $row['away_goals'];
           $game = new Game(array(
             'id' => $row['id'],
             'league' => $row['league'],
-            'home_goals' => $row['home_goals'],
-            'away_goals' => $row['away_goals']
+            'home_goals' => $home_goals,
+            'away_goals' => $away_goals
           ));
           $league = League::find($row['league']);
           $home_team = Team::find($row['home_team']);
@@ -27,6 +29,20 @@ class Game extends BaseModel {
           $game->league_name = $league->name;
           $game->home_name = $home_team->name;
           $game->away_name = $away_team->name;
+          //lets check if game was won
+          if ($home_team == $team_id) {
+              if ($home_goals > $away_goals) {
+                  $game->win = true;
+              } elseif ($home_goals < $away_goals) {
+                  $game->loss = true;
+              }
+          } else {
+              if ($home_goals > $away_goals) {
+                  $game->loss = true;
+              } elseif ($home_goals < $away_goals) {
+                  $game->win = true;
+              }
+          }
           $games[] = $game;
         }
 

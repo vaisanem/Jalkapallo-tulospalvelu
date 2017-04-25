@@ -13,8 +13,43 @@
     <button class="btn btn-info">Otteluhistoria</button>
   </p>
     {% endif %}
-  {% endif %}  
+  {% endif %}
   
-  
+  <h2>Sarjataulukko</h2>
+
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Sijoitus</th>
+            <th>Nimi</th>
+            <th>P</th>
+            <th>W</th>
+            <th>D</th>
+            <th>L</th>
+            <th>TM</th>
+            <th>PM</th>
+            <th>+/-</th>
+            <th>Pisteet</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <!-- Listataan joukkueet tähän -->
+          {% for league in leagues %}
+          <tr>
+            <td>1</td>
+            <td><a href="{{base_path}}/sarjat/{{league.id}}">{{league.name}}</a></td>
+            <td>5</td>
+            <td>2</td>
+            <td>1</td>
+            <td>2</td>
+            <td>8</td>
+            <td>8</td>
+            <td>0</td>
+            <td>7</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
   
 {% endblock %}

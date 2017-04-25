@@ -48,6 +48,10 @@
       LeagueController::store();
   });
   
+  $routes->get('/sarjat/lisaa', function() {
+      LeagueController::create();
+  });
+  
   $routes->get('/sarjat/:id/muokkaa', function($id) {
       LeagueController::edit($id);
   });

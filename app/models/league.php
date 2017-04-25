@@ -41,6 +41,38 @@ class League extends BaseModel {
         return $league;
     }
     
+    public static function teams_leagues($team_id) {
+        $query = DB::connection()->prepare('SELECT * FROM League WHERE id = (SELECT league_id FROM LeagueTeam WHERE team_id = :id');
+        $query->execute(array('id' => $team_id));
+        $rows = $query->fetchAll();
+        $leagues = array();
+        
+        foreach ($rows as $row) {
+            $leagues[] = new League(array(
+            'id' => $row['id'],
+            'name' => $row['name'],
+            ));
+        }
+
+        return $leagues;
+    }
+    
+    public static function leagues_for_team($team_id) {
+        $query = DB::connection()->prepare('SELECT * FROM League WHERE id != (SELECT league_id FROM LeagueTeam WHERE team_id = :id');
+        $query->execute(array('id' => $team_id));
+        $rows = $query->fetchAll();
+        $leagues = array();
+        
+        foreach ($rows as $row) {
+            $leagues[] = new League(array(
+            'id' => $row['id'],
+            'name' => $row['name'],
+            ));
+        }
+
+        return $leagues;
+    }
+    
     public function save() {
         $query = DB::connection()->prepare('INSERT INTO League (name) VALUES (:name) RETURNING id');
         $query->execute(array('name' => $this->name));

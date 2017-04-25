@@ -9,9 +9,11 @@ class TeamController extends BaseController {
     
     public static function find($id) {
         $team = Team::find($id);
-        $leagues = League::all();
+        $teams_leagues = League::teams_leagues($id);
+        $leagues_for_team = League::leagues_for_team($id);
         $games = Game::teams_games($id);
-        View::make('team/team.html',array('team' => $team, 'leagues' => $leagues, 'games' => $games));
+        View::make('team/team.html',array('team' => $team, 'teams_leagues' => $teams_leagues,
+            'leagues_for_team' => $leagues_for_team, 'games' => $games));
     }
     
     public static function create() {
