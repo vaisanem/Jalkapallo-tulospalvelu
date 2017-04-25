@@ -42,7 +42,7 @@ class League extends BaseModel {
     }
     
     public static function teams_leagues($team_id) {
-        $query = DB::connection()->prepare('SELECT * FROM League WHERE id = (SELECT league_id FROM LeagueTeam WHERE team_id = :id');
+        $query = DB::connection()->prepare('SELECT * FROM League WHERE id = (SELECT league_id FROM LeagueTeam WHERE team_id = :id)');
         $query->execute(array('id' => $team_id));
         $rows = $query->fetchAll();
         $leagues = array();
