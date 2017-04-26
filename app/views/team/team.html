@@ -2,13 +2,11 @@
 {% block content %}
 
   
-  <h1>{{team.name}}</h1>
+  <h1>{{team.name}}</h1> <a href="{{base_path}}/joukkueet/{{team.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
   
   <ul>
         <li><strong>Kotikenttä: </strong>{{team.ground}}</li>
   </ul>
-  
-  <a href="{{base_path}}/joukkueet/{{team.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
   
   {% if user_logged_in %}
     {% if user_logged_in.mode > 0 %}
@@ -18,14 +16,13 @@
     <p>
             <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/poista">
                 <button type="submit" class="btn btn-danger">Poista</button>
-            </form>
-            <a href="{{base_path}}/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
+            </form> <a href="{{base_path}}/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
     </p>
-        
+    <br>
         <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/lisaa/sarjaan">
             
             <div class="form-group">
-              <label>Lisää sarjaan</label>
+              <label>LISÄÄ SARJAAN</label>
               <select class="form-control" name="league">
                 {% for league in leagues_for_team %}
                   <option value="{{league.id}}">{{league.name}}</option>

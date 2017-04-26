@@ -86,7 +86,7 @@ class League extends BaseModel {
     }
     
     public function destroy($id) {
-        $query = DB::connection()->prepare('DELETE FROM League WHERE id = :id CASCADE');
+        $query = DB::connection()->prepare('DELETE FROM League WHERE id = :id');
         $query->execute(array('id' => $id));
     }
     

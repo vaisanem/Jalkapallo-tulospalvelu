@@ -56,7 +56,7 @@ class Team extends BaseModel {
     }
     
     public function destroy($id) {
-        $query = DB::connection()->prepare('DELETE FROM Team WHERE id = :id CASCADE');
+        $query = DB::connection()->prepare('DELETE FROM Team WHERE id = :id');
         $query->execute(array('id' => $id));
     }
     

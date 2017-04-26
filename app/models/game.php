@@ -50,7 +50,26 @@ class Game extends BaseModel {
     }
     
     public static function leagues_games($league_id) {
+        $query = DB::connection()->prepare('SELECT * FROM Game WHERE league = :id');
+        $query->execute(array('id' => $league_id));
+        $rows = $query->fetchAll();
+        $games = array();
         
+        foreach ($rows as $row) {
+            $game = new Game(array(
+              'id' => $row['id'],
+              'league' => $row['league'],
+              'home_goals' => $row['home_goals'],
+              'away_goals' => $row['away_goals']
+            ));
+            $home_team = Team::find($row['home_team']);
+            $away_team = Team::find($row['away_team']);
+            $game->home_name = $home_team->name;
+            $game->away_name = $away_team->name;
+            $games[] = $game;
+        }
+        
+        return $games;
     }
     
 }

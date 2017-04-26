@@ -64,6 +64,10 @@
       LeagueController::destroy($id);
   });
   
+  $routes->get('/sarjat/:id/ottelut', function($id) {
+      GameController::leagues_games($id);
+  });
+  
   $routes->get('/sarjat/:id', function($id) {
       LeagueController::find($id);
   });

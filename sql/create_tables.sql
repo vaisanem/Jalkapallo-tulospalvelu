@@ -20,8 +20,8 @@ CREATE TABLE LeagueTeam (
         id SERIAL PRIMARY KEY,
         team_id INTEGER NOT NULL,
         league_id INTEGER NOT NULL,
-        FOREIGN KEY(team_id) REFERENCES Team(id),
-        FOREIGN KEY(league_id) REFERENCES League(id)
+        FOREIGN KEY(team_id) REFERENCES Team(id) ON DELETE CASCADE,
+        FOREIGN KEY(league_id) REFERENCES League(id) ON DELETE CASCADE
         );
 
 CREATE TABLE Game (
@@ -31,7 +31,7 @@ CREATE TABLE Game (
         away_team INTEGER NOT NULL,
         home_goals INTEGER NOT NULL,
         away_goals INTEGER NOT NULL,
-        FOREIGN KEY(league) REFERENCES League(id),
-        FOREIGN KEY(home_team) REFERENCES Team(id),
-        FOREIGN KEY(away_team) REFERENCES Team(id)
+        FOREIGN KEY(league) REFERENCES League(id) ON DELETE CASCADE,
+        FOREIGN KEY(home_team) REFERENCES Team(id) ON DELETE CASCADE,
+        FOREIGN KEY(away_team) REFERENCES Team(id) ON DELETE CASCADE
         );

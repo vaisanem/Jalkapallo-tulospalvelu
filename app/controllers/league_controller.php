@@ -29,7 +29,7 @@ class LeagueController extends BaseController {
             
         } else {
             $league->save();
-            Redirect::to('/joukkueet/' . $league->id, array('message' => 'Sarja lisätty.'));
+            Redirect::to('/sarjat/' . $league->id, array('message' => 'Sarja lisätty.'));
         }
     }
     
