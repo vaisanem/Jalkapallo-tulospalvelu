@@ -9,7 +9,29 @@ class LeagueController extends BaseController {
     
     public static function find($id) {
         $league = League::find($id);
-        View::make('league/league.html', array('league' => $league));
+        $teams = Team::leagues_teams($id);
+        $league_teams = array();
+        foreach ($teams as $team) {
+            $played = Game::played($id, $team->id);
+            $wins = Game::wins($id, $team->id);
+            $losses = Game::losses($id, $team->id);
+            $draws = $played - $wins - $losses;
+            $h_scored = Game::home_scored($id, $team->id);
+            $a_scored = Game::away_scored($id, $team->id);
+            $scored = $h_scored + $a_scored;
+            $h_conceded = Game::home_conceded($id, $team->id);
+            $a_conceded = Game::away_conceded($id, $team->id);
+            $conceded = $h_conceded + $a_conceded;
+            $difference = $scored - $conceded;
+            $points = 3 * $wins + $draws;
+            $league_team = new LeagueTeam(array('team' => $team, 'played' => $played, 
+                'wins' => $wins, 'draws' => $draws, 'losses' => $losses,
+                'scored' => $scored, 'conceded' => $conceded, 'difference' => $difference,
+                'points' => $points));
+            $league_teams[] = $league_team;
+            
+        }
+        View::make('league/league.html', array('league' => $league, 'teams' => $league_teams));
     }
     
     public static function create() {

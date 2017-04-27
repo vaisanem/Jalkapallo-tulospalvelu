@@ -2,11 +2,13 @@
 {% block content %}
 
   
-  <h1>{{team.name}}</h1> <a href="{{base_path}}/joukkueet/{{team.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
+  <h1>{{team.name}}</h1>
   
   <ul>
         <li><strong>Kotikenttä: </strong>{{team.ground}}</li>
   </ul>
+  
+  <a href="{{base_path}}/joukkueet/{{team.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
   
   {% if user_logged_in %}
     {% if user_logged_in.mode > 0 %}
@@ -36,7 +38,7 @@
         </form>
     {% endif %}    
   {% endif %}
-  
+  <br>
   <h2>Sarjat</h2>
   
   <table class="table table-striped table-bordered">

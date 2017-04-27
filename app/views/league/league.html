@@ -22,9 +22,9 @@
             <th>Sijoitus</th>
             <th>Nimi</th>
             <th>P</th>
-            <th>W</th>
-            <th>D</th>
-            <th>L</th>
+            <th>V</th>
+            <th>T</th>
+            <th>H</th>
             <th>TM</th>
             <th>PM</th>
             <th>+/-</th>
@@ -34,19 +34,21 @@
 
         <tbody>
           <!-- Listataan joukkueet tähän -->
-          {% for league in leagues %}
+          {% for team in teams %}
+          {% set rank = 1 %}
           <tr>
-            <td>1</td>
-            <td><a href="{{base_path}}/sarjat/{{league.id}}">{{league.name}}</a></td>
-            <td>5</td>
-            <td>2</td>
-            <td>1</td>
-            <td>2</td>
-            <td>8</td>
-            <td>8</td>
-            <td>0</td>
-            <td>7</td>
+            <td>{{rank}}</td>
+            <td><a href="{{base_path}}/joukkueet/{{team.team.id}}">{{team.team.name}}</a></td>
+            <td>{{team.played}}</td>
+            <td>{{team.wins}}</td>
+            <td>{{team.draws}}</td>
+            <td>{{team.losses}}</td>
+            <td>{{team.scored}}</td>
+            <td>{{team.conceded}}</td>
+            <td>{{team.difference}}</td>
+            <td>{{team.points}}</td>
           </tr>
+          {% set rank = rank + 1 %}
           {% endfor %}
         </tbody>
       </table>

@@ -6,7 +6,7 @@ class League extends BaseModel {
     
     public function __construct($attributes = null) {
         parent::__construct($attributes);
-        $this->validators = array();
+        $this->validators = array('validate_name');
     }
     
     public static function all() {

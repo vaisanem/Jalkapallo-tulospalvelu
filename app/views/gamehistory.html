@@ -22,7 +22,7 @@
             <td><a href="{{base_path}}/sarjat/{{game.league}}">{{game.league_name}}</a></td>
             <td>{{game.home_name}} - {{game.away_name}}</td>
             {% if game.win %}
-                <td style="background-color:green">{{game.home_goals}} - {{game.away_goals}}</td>
+                <td style="background-color:greenyellow">{{game.home_goals}} - {{game.away_goals}}</td>
             {% elseif game.loss %}
                 <td style="background-color:red">{{game.home_goals}} - {{game.away_goals}}</td>
             {% else %}

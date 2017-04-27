@@ -65,6 +65,23 @@ class Team extends BaseModel {
         $query->execute(array('team_id' => $this->id, 'league_id' => $id));
     }
     
+    public static function leagues_teams($league_id) {
+        $query = DB::connection()->prepare('SELECT * FROM Team WHERE id IN (SELECT team_id FROM LeagueTeam WHERE league_id = :id)');
+        $query->execute(array('id' => $league_id));
+        $rows = $query->fetchAll();
+        $teams = array();
+        
+        foreach ($rows as $row) {
+            $teams[] = new Team(array(
+            'id' => $row['id'],
+            'name' => $row['name'],
+            'ground' => $row['ground']
+            ));
+        }
+
+        return $teams;
+    }
+    
     public function validate_name() {
         $errors = $this->validate_string_length($this->name);
         
