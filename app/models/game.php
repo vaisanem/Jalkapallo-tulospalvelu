@@ -75,7 +75,7 @@ class Game extends BaseModel {
     }
     
     public static function played($league_id, $team_id) {
-        $query = DB::connection()->prepare('SELECT COUNT(*) as played FROM Game WHERE league = :league_id AND home_team = :team_id OR away_team = :team_id');
+        $query = DB::connection()->prepare('SELECT COUNT(*) as played FROM Game WHERE league = :league_id AND (home_team = :team_id OR away_team = :team_id)');
         $query->execute(array('league_id' => $league_id, 'team_id' => $team_id));
         $row = $query->fetch();
         $played = null;
@@ -88,7 +88,7 @@ class Game extends BaseModel {
     }
     
     public static function wins($league_id, $team_id) {
-        $query = DB::connection()->prepare('SELECT COUNT(*) as wins FROM Game WHERE league = :league_id AND (home_team = :team_id AND home_goals > away_goals) OR (away_team = :team_id AND away_goals > home_goals)');
+        $query = DB::connection()->prepare('SELECT COUNT(*) as wins FROM Game WHERE league = :league_id AND ((home_team = :team_id AND home_goals > away_goals) OR (away_team = :team_id AND away_goals > home_goals))');
         $query->execute(array('league_id' => $league_id, 'team_id' => $team_id));
         $row = $query->fetch();
         $wins = null;
@@ -101,7 +101,7 @@ class Game extends BaseModel {
     }
     
     public static function losses($league_id, $team_id) {
-        $query = DB::connection()->prepare('SELECT COUNT(*) as losses FROM Game WHERE league = :league_id AND (home_team = :team_id AND home_goals < away_goals) OR (away_team = :team_id AND away_goals < home_goals)');
+        $query = DB::connection()->prepare('SELECT COUNT(*) as losses FROM Game WHERE league = :league_id AND ((home_team = :team_id AND home_goals < away_goals) OR (away_team = :team_id AND away_goals < home_goals))');
         $query->execute(array('league_id' => $league_id, 'team_id' => $team_id));
         $row = $query->fetch();
         $losses = null;
