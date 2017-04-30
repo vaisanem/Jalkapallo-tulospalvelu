@@ -30,7 +30,7 @@ class LeagueController extends BaseController {
                 'points' => $points));
             $league_teams[] = $league_team;    
         }
-        usort($league_teams, "mysort");
+        usort($league_teams, array("LeagueTeam", "mysort"));
         View::make('league/league.html', array('league' => $league, 'teams' => $league_teams));
     }
     
