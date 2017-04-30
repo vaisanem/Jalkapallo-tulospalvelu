@@ -28,9 +28,9 @@ class LeagueController extends BaseController {
                 'wins' => $wins, 'draws' => $draws, 'losses' => $losses,
                 'scored' => $scored, 'conceded' => $conceded, 'difference' => $difference,
                 'points' => $points));
-            $league_teams[] = $league_team;
-            
+            $league_teams[] = $league_team;    
         }
+        usort($league_teams, "sort");
         View::make('league/league.html', array('league' => $league, 'teams' => $league_teams));
     }
     
@@ -80,6 +80,30 @@ class LeagueController extends BaseController {
     public static function destroy($id) {
         League::destroy($id);
         Redirect::to('/sarjat', array('message' => 'Sarja on poistettu onnistuneesti.'));
+    }
+    
+    public function sort($a, $b) {
+        if ($a instanceof LeagueTeam && $b instanceof LeagueTeam) {
+            if ($a->points > $b->points) {
+                return -1;
+            } elseif ($a->points < $b->points) {
+                return 1;
+            } elseif ($a->difference > $b->difference) {
+                return -1;
+            } elseif ($a->difference < $b->difference) {
+                return 1;
+            } elseif ($a->scored > $b->scored) {
+                return -1;
+            } elseif ($a->scored < $b->scored) {
+                return 1;
+            } elseif ($a->played > $b->played) {
+                return 1;
+            } elseif ($a->played < $b->played) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
     }
 }
 
