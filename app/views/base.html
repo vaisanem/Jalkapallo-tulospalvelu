@@ -43,7 +43,7 @@
             <li><a href="{{base_path}}/joukkueet">Joukkueet</a></li>
             {% if user_logged_in %}
                 <li><a href="{{base_path}}/asetukset">Asetukset</a></li>
-                <form method="post" action="{{base_path}}/kirjaudu/ulos">
+                <form class="navbar-form" method="post" action="{{base_path}}/kirjaudu/ulos">
                     <button type="submit" class="btn btn-default">Kirjaudu ulos</button>
                 </form>
             {% else %}
@@ -55,6 +55,20 @@
         </div>
       </div>
     </nav>
+      
+    {% if errors %}
+        <div class="alert alert-danger">
+            {% for error in errors %}
+              <label>{{error}}</label>
+            {% endfor %}
+        </div>
+    {% endif %}
+        
+    {% if message %}
+        <div class="alert-info">
+            <label>{{message}}</label>
+        </div>
+    {%endif %}
 
     <div id="main-container">
       <!-- Dynaaminen sisältö tulee tähän -->

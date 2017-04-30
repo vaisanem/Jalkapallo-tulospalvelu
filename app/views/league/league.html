@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+
   <h1>{{league.name}}</h1> <a href="{{base_path}}/sarjat/{{league.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
   <!-- Painikkeet tähän -->
   {% if user_logged_in %}

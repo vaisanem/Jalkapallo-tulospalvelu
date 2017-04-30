@@ -30,7 +30,7 @@ class LeagueController extends BaseController {
                 'points' => $points));
             $league_teams[] = $league_team;    
         }
-        usort($league_teams, "sort");
+        usort($league_teams, "mysort");
         View::make('league/league.html', array('league' => $league, 'teams' => $league_teams));
     }
     
@@ -82,7 +82,7 @@ class LeagueController extends BaseController {
         Redirect::to('/sarjat', array('message' => 'Sarja on poistettu onnistuneesti.'));
     }
     
-    public function sort($a, $b) {
+    public function mysort($a, $b) {
         if ($a instanceof LeagueTeam && $b instanceof LeagueTeam) {
             if ($a->points > $b->points) {
                 return -1;

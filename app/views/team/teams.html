@@ -1,10 +1,6 @@
  {% extends "base.html" %}
 {% block content %}
   <h1>Joukkueet</h1>
-  
-  {% if message %}
-    <label>{{message}}</label>
-  {%endif %}
 
   {% if user_logged_in %}
     {% if user_logged_in.mode != 0 %}

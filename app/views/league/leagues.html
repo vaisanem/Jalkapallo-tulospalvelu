@@ -2,10 +2,6 @@
 {% block content %}
   <h1>Sarjat</h1>
   
-  {% if message %}
-    <label>{{message}}</label>
-  {%endif %}
-  
   {% if user_logged_in %}
     {% if user_logged_in.mode != 0 %}
         <p>

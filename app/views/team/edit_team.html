@@ -1,18 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>Muokkaa</h1>
-    
-    {% if errors %}
-        <div class="alert alert-danger">
-            {% for error in errors %}
-              <label>{{error}}</label>
-            {% endfor %}
-        </div>
-    {% endif %}
-    
-    {% if message %}
-        <label>{{message}}</label>
-    {%endif %}
 
     <form method="post" action="{{base_path}}/joukkueet/{{attributes.id}}/muokkaa">
       <div class="form-group">
