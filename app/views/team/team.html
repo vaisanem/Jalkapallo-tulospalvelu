@@ -17,11 +17,12 @@
     
     <!-- Painikkeet tähän -->
     
-    <span>
+    <span style="display: inline;">
             <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/poista">
                 <button type="submit" class="btn btn-danger">Poista</button>
             </form> <a href="{{base_path}}/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
     </span>
+    <br>
     <br>
         <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/lisaa/sarjaan">
             

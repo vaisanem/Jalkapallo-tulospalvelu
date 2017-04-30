@@ -39,6 +39,12 @@ INSERT INTO Game (league, home_team, away_team, home_goals, away_goals)
 INSERT INTO Game (league, home_team, away_team, home_goals, away_goals)
      VALUES ('1', '1', '6', '1', '1');
 INSERT INTO Game (league, home_team, away_team, home_goals, away_goals)
+     VALUES ('1', '6', '3', '4', '0');
+INSERT INTO Game (league, home_team, away_team, home_goals, away_goals)
+     VALUES ('1', '3', '6', '1', '3');
+INSERT INTO Game (league, home_team, away_team, home_goals, away_goals)
+     VALUES ('1', '6', '2', '2', '0');
+INSERT INTO Game (league, home_team, away_team, home_goals, away_goals)
      VALUES ('1', '5', '3', '0', '0');
 INSERT INTO Game (league, home_team, away_team, home_goals, away_goals)
      VALUES ('2', '4', '7', '3', '0');

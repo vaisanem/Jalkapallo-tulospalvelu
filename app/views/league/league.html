@@ -35,8 +35,8 @@
 
         <tbody>
           <!-- Listataan joukkueet tähän -->
-          {% for team in teams %}
           {% set rank = 1 %}
+          {% for team in teams %}
           <tr>
             <td>{{rank}}</td>
             <td><a href="{{base_path}}/joukkueet/{{team.team.id}}">{{team.team.name}}</a></td>
