@@ -76,7 +76,7 @@ class Person extends BaseModel {
     }
 
     public function validate_name() {
-        $errors = $this->validate_string_length($this->name);
+        $errors = $this->validate_string_length($this->name, null);
         
         foreach (Person::all() as $person) {
             if ($this->name == $person->name && $this->id != $person->id) {
@@ -89,6 +89,7 @@ class Person extends BaseModel {
     }
     
     public function validate_password() {
-        return $this->validate_string_length($this->password);
+        $what = 'Salasana';
+        return $this->validate_string_length($this->password, $what);
     }
 }

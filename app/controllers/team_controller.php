@@ -68,7 +68,7 @@ class TeamController extends BaseController {
         $league_id = $_POST['league'];
         $team = Team::find($id);
         $team->add_to_league($league_id);
-        Redirect::to('/joukkueet/' . $id);
+        Redirect::to('/joukkueet/' . $id, array('message' => 'Joukkue lisätty sarjaan.'));
     }
 }
 

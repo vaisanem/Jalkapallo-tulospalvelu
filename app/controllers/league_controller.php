@@ -16,12 +16,14 @@ class LeagueController extends BaseController {
             $wins = Game::wins($id, $team->id);
             $losses = Game::losses($id, $team->id);
             $draws = $played - $wins - $losses;
-            $h_scored = Game::home_scored($id, $team->id);
-            $a_scored = Game::away_scored($id, $team->id);
-            $scored = $h_scored + $a_scored;
-            $h_conceded = Game::home_conceded($id, $team->id);
-            $a_conceded = Game::away_conceded($id, $team->id);
-            $conceded = $h_conceded + $a_conceded;
+            $scored = Game::scored($id, $team->id);
+            $conceded = Game::conceded($id, $team->id);
+//            $h_scored = Game::home_scored($id, $team->id);
+//            $a_scored = Game::away_scored($id, $team->id);
+//            $scored = $h_scored + $a_scored;
+//            $h_conceded = Game::home_conceded($id, $team->id);
+//            $a_conceded = Game::away_conceded($id, $team->id);
+//            $conceded = $h_conceded + $a_conceded;
             $difference = $scored - $conceded;
             $points = 3 * $wins + $draws;
             $league_team = new LeagueTeam(array('team' => $team, 'played' => $played, 
@@ -82,28 +84,15 @@ class LeagueController extends BaseController {
         Redirect::to('/sarjat', array('message' => 'Sarja on poistettu onnistuneesti.'));
     }
     
-    public function mysort($a, $b) {
-        if ($a instanceof LeagueTeam && $b instanceof LeagueTeam) {
-            if ($a->points > $b->points) {
-                return -1;
-            } elseif ($a->points < $b->points) {
-                return 1;
-            } elseif ($a->difference > $b->difference) {
-                return -1;
-            } elseif ($a->difference < $b->difference) {
-                return 1;
-            } elseif ($a->scored > $b->scored) {
-                return -1;
-            } elseif ($a->scored < $b->scored) {
-                return 1;
-            } elseif ($a->played > $b->played) {
-                return 1;
-            } elseif ($a->played < $b->played) {
-                return -1;
-            } else {
-                return 0;
-            }
-        }
+    public static function add_game($id) {
+        $league = League::find($id);
+        $teams = Team::leagues_teams($id);
+        View::make('league/add_game.html', array('league' => $league, 'teams' => $teams));
     }
+    
+    public function store_game($id) {
+        
+    }
+    
 }
 

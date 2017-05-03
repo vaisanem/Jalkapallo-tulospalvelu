@@ -83,7 +83,7 @@ class Team extends BaseModel {
     }
     
     public function validate_name() {
-        $errors = $this->validate_string_length($this->name);
+        $errors = $this->validate_string_length($this->name, null);
         
         foreach (Team::all() as $team) {
             if ($this->name == $team->name && $this->id != $team->id) {

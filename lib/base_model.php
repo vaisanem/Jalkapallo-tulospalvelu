@@ -28,13 +28,16 @@
       return $errors;
     }
     
-    public function validate_string_length($string) {
+    public function validate_string_length($string, $what) {
+        if ($what == null) {
+            $what = 'Nimi';
+        }
         $errors = array();
         if ($string == '' || $string == null) {
-            $errors[] = 'Nimi ei saa olla tyhjä.';
+            $errors[] = '$what ei saa olla tyhjä.';
         }
         if (strlen($string) < 3 || strlen($string) > 31) {
-            $errors[] = 'Nimen pituuden oltava välillä 3-30.';
+            $errors[] = '$what on oltava pituudeltaan 3-30 merkkiä.';
         }
         return $errors;
     }

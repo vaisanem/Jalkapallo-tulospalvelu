@@ -30,5 +30,6 @@ class LeagueTeam extends BaseModel {
                 return 0;
             }
         }
+        return 0;
     }
 }

@@ -91,7 +91,7 @@ class League extends BaseModel {
     }
     
     public function validate_name() {
-        $errors = $this->validate_string_length($this->name);
+        $errors = $this->validate_string_length($this->name, null);
         
         foreach (League::all() as $league) {
             if ($this->name == $league->name && $this->id != $league->id) {

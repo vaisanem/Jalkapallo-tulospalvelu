@@ -68,6 +68,14 @@
       GameController::leagues_games($id);
   });
   
+  $routes->get('/sarjat/:id/ottelut/lisaa', function($id) {
+      LeagueController::add_game($id);
+  });
+  
+  $routes->post('/sarjat/:id/ottelut/lisaa', function($id) {
+      LeagueController::store_game($id);
+  });
+  
   $routes->get('/sarjat/:id', function($id) {
       LeagueController::find($id);
   });
