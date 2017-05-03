@@ -118,32 +118,6 @@ class Game extends BaseModel {
         return $losses;
     }
     
-    public static function home_scored($league_id, $team_id) {
-        $query = DB::connection()->prepare('SELECT SUM(home_goals) as scored FROM Game WHERE league = :league_id AND home_team = :team_id');
-        $query->execute(array('league_id' => $league_id, 'team_id' => $team_id));
-        $row = $query->fetch();
-        $scored = 0;
-        
-        if ($row) {
-            $scored = $row['scored'];
-        }
-
-        return $scored;
-    }
-    
-    public static function away_scored($league_id, $team_id) {
-        $query = DB::connection()->prepare('SELECT SUM(away_goals) as scored FROM Game WHERE league = :league_id AND away_team = :team_id');
-        $query->execute(array('league_id' => $league_id, 'team_id' => $team_id));
-        $row = $query->fetch();
-        $scored = 0;
-        
-        if ($row) {
-            $scored = $row['scored'];
-        }
-
-        return $scored;
-    }
-    
     public static function scored($league_id, $team_id) {
         $query = DB::connection()->prepare('SELECT * FROM (SELECT SUM(home_goals) as home FROM Game WHERE league = :league_id AND home_team = :team_id) a INNER JOIN (SELECT SUM(away_goals) as away FROM Game WHERE league = :league_id AND away_team = :team_id) b ON 1=1');
         $query->execute(array('league_id' => $league_id, 'team_id' => $team_id));
@@ -155,32 +129,6 @@ class Game extends BaseModel {
         }
 
         return $scored;
-    }
-    
-    public static function home_conceded($league_id, $team_id) {
-        $query = DB::connection()->prepare('SELECT SUM(home_goals) as conceded FROM Game WHERE league = :league_id AND away_team = :team_id');
-        $query->execute(array('league_id' => $league_id, 'team_id' => $team_id));
-        $row = $query->fetch();
-        $conceded = 0;
-        
-        if ($row) {
-            $conceded = $row['conceded'];
-        }
-
-        return $conceded;
-    }
-    
-    public static function away_conceded($league_id, $team_id) {
-        $query = DB::connection()->prepare('SELECT SUM(away_goals) as conceded FROM Game WHERE league = :league_id AND home_team = :team_id');
-        $query->execute(array('league_id' => $league_id, 'team_id' => $team_id));
-        $row = $query->fetch();
-        $conceded = 0;
-        
-        if ($row) {
-            $conceded = $row['conceded'];
-        }
-
-        return $conceded;
     }
     
     public static function conceded($league_id, $team_id) {

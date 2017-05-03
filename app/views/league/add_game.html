@@ -12,20 +12,24 @@
                 {% endfor %}
             </select>
         </div>
-        {% for i in 0..50 %}
+        
         <div class="form-group">
             <label>Kotijoukkueen maalit</label>
             <select style="display: inline" class="form-control" name="home_goals">
+                {% for i in 0..50 %}
                   <option value="{{i}}">{{i}}</option>
+                {% endfor %}  
             </select>
         </div>
         <div class="form-group">
             <label>Vierasjoukkueen maalit</label>
             <select style="display: inline" class="form-control" name="away_goals">
+                {% for i in 0..50 %}
                   <option value="{{i}}">{{i}}</option>
+                {% endfor %}  
             </select>
         </div>
-        {% endfor %}
+
         <div class="form-group">
             <label>Vierasjoukkue</label>
             <select style="display: inline" class="form-control" name="away_team">
