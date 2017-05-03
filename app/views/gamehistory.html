@@ -19,8 +19,8 @@
           <!-- Listataan pelit tähän -->
           {% for game in games %}
           <tr>
-            <td><a href="{{base_path}}/sarjat/{{game.league.id}}">{{game.league.name}}</a></td>
-            <td>{{game.home_team.name}} - {{game.away_team.name}}</td>
+            <td><a href="{{base_path}}/sarjat/{{game.id}}">{{game.league}}</a></td>
+            <td>{{game.home_team}} - {{game.away_team}}</td>
             {% if game.win %}
                 <td style="background-color:greenyellow">{{game.home_goals}} - {{game.away_goals}}</td>
             {% elseif game.loss %}

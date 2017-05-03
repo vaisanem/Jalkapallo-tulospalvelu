@@ -91,7 +91,22 @@ class LeagueController extends BaseController {
     }
     
     public function store_game($id) {
-        
+        $params = $_POST;
+        $home_id = $params['home_team'];
+        $away_id = $params['away_team'];
+        if ($home_id != $away_id) {
+            $home_team = Team::find($home_id);
+            $away_team = Team::find($away_id);
+            $league = League::find($id);
+            $attributes = array('league' => $league->id, 'home_team' => $home_team->id,
+                'away_team' => $away_team->id, 'home_goals' => $params['home_goals'],
+                'away_goals' => $params['away_goals']);
+            $game = new Game($attributes);
+            $game->save();
+            Redirect::to('/sarjat/' . $id, array('message' => 'Ottelutulos lisätty.'));
+        } else {
+            Redirect::to('/sarjat/' . $id . 'ottelut/lisaa', array('message' => 'Joukkue ei voi pelata itseään vastaan.'));
+        }
     }
     
 }

@@ -2,10 +2,17 @@
 
 class Game extends BaseModel {
     
-    public $id, $league, $league_name, $home_name, $away_name, $home_goals, $away_goals, $win, $loss;
+    public $id, $league, $home_team, $away_team, $home_goals, $away_goals, $win, $loss;
     
     public function __construct($attributes = null) {
         parent::__construct($attributes);
+    }
+    
+    public function save() {
+        $query = DB::connection()->prepare('INSERT INTO Game (league, home_team, away_team, home_goals, away_goals) VALUES (:league, :home_team, :away_team, :home_goals, :away_goals) RETURNING id');
+        $query->execute(array('league' => $this->league, 'home_team' => $this->home_team, 'away_team' => $this->away_team, 'home_goals' => $this->home_goals, 'away_goals' => $this->away_goals));
+        $row = $query->fetch();
+        $this->id = $row['id'];
     }
     
     public static function teams_games($team_id) {
@@ -18,17 +25,16 @@ class Game extends BaseModel {
           $home_goals = $row['home_goals'];
           $away_goals = $row['away_goals'];
           $game = new Game(array(
-            'id' => $row['id'],
-            'league' => $row['league'],
+            'id' => $row['league'],
             'home_goals' => $home_goals,
             'away_goals' => $away_goals
           ));
           $league = League::find($row['league']);
           $home_team = Team::find($row['home_team']);
           $away_team = Team::find($row['away_team']);
-          $game->league_name = $league->name;
-          $game->home_name = $home_team->name;
-          $game->away_name = $away_team->name;
+          $game->league = $league->name;
+          $game->home_team = $home_team->name;
+          $game->away_team = $away_team->name;
           //lets check if game was won
           if ($home_team->id == $team_id) {
               if ($home_goals > $away_goals) {
@@ -57,17 +63,16 @@ class Game extends BaseModel {
         
         foreach ($rows as $row) {
             $game = new Game(array(
-              'id' => $row['id'],
-              'league' => $row['league'],
+              'id' => $row['league'],
               'home_goals' => $row['home_goals'],
               'away_goals' => $row['away_goals']
             ));
             $league = League::find($row['league']);
             $home_team = Team::find($row['home_team']);
             $away_team = Team::find($row['away_team']);
-            $game->league_name = $league->name;
-            $game->home_name = $home_team->name;
-            $game->away_name = $away_team->name;
+            $game->league = $league->name;
+            $game->home_team = $home_team->name;
+            $game->away_team = $away_team->name;
             $games[] = $game;
         }
         
@@ -140,7 +145,7 @@ class Game extends BaseModel {
     }
     
     public static function scored($league_id, $team_id) {
-        $query = DB::connection()->prepare('SELECT * FROM (SELECT SUM(home_goals) as home FROM Game WHERE league = :league_id AND home_team = :team:id) a INNER JOIN (SELECT SUM(away_goals) as away FROM Game WHERE league = :league_id AND away_team = :team_id) b ON 1=1');
+        $query = DB::connection()->prepare('SELECT * FROM (SELECT SUM(home_goals) as home FROM Game WHERE league = :league_id AND home_team = :team_id) a INNER JOIN (SELECT SUM(away_goals) as away FROM Game WHERE league = :league_id AND away_team = :team_id) b ON 1=1');
         $query->execute(array('league_id' => $league_id, 'team_id' => $team_id));
         $row = $query->fetch();
         $scored = 0;

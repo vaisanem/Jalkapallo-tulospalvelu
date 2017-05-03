@@ -37,7 +37,7 @@
             $errors[] = '$what ei saa olla tyhjä.';
         }
         if (strlen($string) < 3 || strlen($string) > 31) {
-            $errors[] = '$what on oltava pituudeltaan 3-30 merkkiä.';
+            $errors[] = $what . ' on oltava pituudeltaan 3-30 merkkiä.';
         }
         return $errors;
     }
