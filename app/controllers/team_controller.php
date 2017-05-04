@@ -18,6 +18,7 @@ class TeamController extends BaseController {
     
     public static function create() {
         self::check_logged_in();
+        self::check_mode();
         View::make('team/add_team.html');
     }
     
@@ -39,6 +40,7 @@ class TeamController extends BaseController {
     
     public static function edit($id) {
         self::check_logged_in();
+        self::check_mode();
         $team = Team::find($id);
         View::make('team/edit_team.html', array('attributes' => $team));
     }

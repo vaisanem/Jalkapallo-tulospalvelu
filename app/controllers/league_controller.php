@@ -32,6 +32,7 @@ class LeagueController extends BaseController {
     
     public static function create() {
         self::check_logged_in();
+        self::check_mode();
         View::make('league/add_league.html');
     }
 
@@ -53,6 +54,7 @@ class LeagueController extends BaseController {
     
     public static function edit($id) {
         self::check_logged_in();
+        self::check_mode();
         $league = League::find($id);
         View::make('league/edit_league.html', array('league' => $league));
     }
@@ -80,6 +82,7 @@ class LeagueController extends BaseController {
     
     public static function add_game($id) {
         self::check_logged_in();
+        self::check_mode();
         $league = League::find($id);
         $teams = Team::leagues_teams($id);
         View::make('league/add_game.html', array('league' => $league, 'teams' => $teams));

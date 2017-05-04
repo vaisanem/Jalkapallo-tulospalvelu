@@ -49,6 +49,7 @@ class PersonController extends BaseController {
     }
     
     public static function settings() {
+        self::check_logged_in();
         $persons = Person::all();
         View::make('person/settings.html', array('persons' => $persons));
     }
