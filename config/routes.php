@@ -96,12 +96,12 @@
     TeamController::edit($id);
   });
   
-  $routes->get('/joukkueet/:id/ottelut', function($id) {
-      GameController::teams_games($id);
-  });
-  
   $routes->post('/joukkueet/:id/muokkaa', function($id) {
     TeamController::update($id);
+  });
+  
+  $routes->get('/joukkueet/:id/ottelut', function($id) {
+      GameController::teams_games($id);
   });
   
   $routes->post('/joukkueet/:id/poista', function($id) {

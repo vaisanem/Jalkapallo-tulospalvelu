@@ -12,7 +12,8 @@ class PersonController extends BaseController {
         $person = Person::authenticate($params['name'], $params['password']);
         
         if ($person == null) {
-            View::make('person/login.html', array('error' => 'Yritä uudelleen.',
+            $errors = array('error' => 'Yritä uudelleen.');
+            View::make('person/login.html', array('errors' => $errors,
                 'name' => $params['name']));
         } else {
             $_SESSION['person'] = $person->id;
@@ -57,14 +58,14 @@ class PersonController extends BaseController {
         $person = Person::find($id);
         $rights = 1;
         $person->rights($rights);
-        Redirect::to('/asetukset');
+        Redirect::to('/asetukset', array('message' => 'Oikeudet annettu.'));
     }
     
     public static function take_rights($id) {
         $person = Person::find($id);
         $rights = 0;
         $person->rights($rights);
-        Redirect::to('/asetukset');
+        Redirect::to('/asetukset', array('message' => 'Oikeudet poistettu.'));
     }
     
 }

@@ -3,7 +3,7 @@
     <h1>Lisää ottelutulos sarjaan {{league.name}}</h1>
 
 
-    <form method="post" action="{{base_path}}/ottelut/lisaa">
+    <form method="post" action="{{base_path}}/sarjat/{{league.id}}/ottelut/lisaa">
         <div class="form-group">
             <label>Kotijoukkue</label>
             <select style="display: inline" class="form-control" name="home_team">
@@ -21,14 +21,6 @@
                 {% endfor %}  
             </select>
         </div>
-        <div class="form-group">
-            <label>Vierasjoukkueen maalit</label>
-            <select style="display: inline" class="form-control" name="away_goals">
-                {% for i in 0..50 %}
-                  <option value="{{i}}">{{i}}</option>
-                {% endfor %}  
-            </select>
-        </div>
 
         <div class="form-group">
             <label>Vierasjoukkue</label>
@@ -38,6 +30,16 @@
                 {% endfor %}
             </select>
         </div>
+        
+        <div class="form-group">
+            <label>Vierasjoukkueen maalit</label>
+            <select style="display: inline" class="form-control" name="away_goals">
+                {% for i in 0..50 %}
+                  <option value="{{i}}">{{i}}</option>
+                {% endfor %}  
+            </select>
+        </div>
+        
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Lisää</button>
         </div>

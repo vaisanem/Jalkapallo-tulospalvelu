@@ -2,26 +2,30 @@
 {% block content %}
 
   
-  <h1>{{team.name}}</h1>
+<h1 style="display: inline">{{team.name}}</h1> <a href="{{base_path}}/joukkueet/{{team.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
   
   <br>
   <ul>
-        <li><strong>Kotikenttä: </strong>{{team.ground}}</li>
+      {% if team.ground %}
+      <li><strong>Kotikenttä: </strong>{{team.ground}}</li>
+      {% else %}
+      <li>Joukkueella ei ole kotikenttää</li>
+      {% endif %}
   </ul>
   <br>
-  
-  <a href="{{base_path}}/joukkueet/{{team.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
   
   {% if user_logged_in %}
     {% if user_logged_in.mode > 0 %}
     
     <!-- Painikkeet tähän -->
     
-    <span style="display: inline;">
-            <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/poista">
-                <button type="submit" class="btn btn-danger">Poista</button>
-            </form> <a href="{{base_path}}/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
-    </span>
+    <p style="display: inline">
+    <form style="display: inline" method="post" action="{{base_path}}/joukkueet/{{team.id}}/poista">
+            <button type="submit" class="btn btn-danger">Poista</button>
+        </form>
+        <a href="{{base_path}}/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
+    </p>
+    <br>
     <br>
     <br>
         <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/lisaa/sarjaan">
@@ -56,7 +60,6 @@
       {% for league in teams_leagues %}
       <tr>
         <td><a href="{{base_path}}/sarjat/{{league.id}}">{{league.name}}</a></td>
-        <td></td>
       </tr>
       {% endfor %}
     </tbody>

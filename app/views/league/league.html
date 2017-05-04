@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <h1>{{league.name}}</h1> <a href="{{base_path}}/sarjat/{{league.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
+<h1 style="display: inline">{{league.name}}</h1> <a href="{{base_path}}/sarjat/{{league.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
   <!-- Painikkeet tähän -->
   {% if user_logged_in %}
     {% if user_logged_in.mode > 0 %}
   <p>
-    <form method="post" action="{{base_path}}/sarjat/{{league.id}}/poista">
+  <form style="display: inline" method="post" action="{{base_path}}/sarjat/{{league.id}}/poista">
         <button type="submit" class="btn btn-danger">Poista</button>
     </form>
       <a href="{{base_path}}/sarjat/{{league.id}}/muokkaa" class="btn btn-default">Muokkaa</a>

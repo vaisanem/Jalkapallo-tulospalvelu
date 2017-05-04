@@ -79,6 +79,7 @@ class LeagueController extends BaseController {
     }
     
     public static function add_game($id) {
+        self::check_logged_in();
         $league = League::find($id);
         $teams = Team::leagues_teams($id);
         View::make('league/add_game.html', array('league' => $league, 'teams' => $teams));

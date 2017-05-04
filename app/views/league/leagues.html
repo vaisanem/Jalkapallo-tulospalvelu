@@ -4,6 +4,7 @@
   
   {% if user_logged_in %}
     {% if user_logged_in.mode != 0 %}
+        <br>
         <p>
           <a href="{{base_path}}/sarjat/lisaa" class="btn btn-success">Lisää sarja</a>
         </p>
@@ -23,7 +24,6 @@
       {% for league in leagues %}
       <tr>
         <td><a href="{{base_path}}/sarjat/{{league.id}}">{{league.name}}</a></td>
-        <td></td>
       </tr>
       {% endfor %}
     </tbody>
