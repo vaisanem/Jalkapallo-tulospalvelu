@@ -5,7 +5,6 @@
 <h1>{{team.name}}</h1>
   
   <br>
-  <br>
   <ul>
       {% if team.ground %}
       <li><strong>Kotikenttä: </strong>{{team.ground}}</li>
@@ -14,8 +13,9 @@
       {% endif %}
   </ul>
   <br>
-  
-  <a href="{{base_path}}/joukkueet/{{team.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
+  <p>
+    <a href="{{base_path}}/joukkueet/{{team.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
+  </p> 
   <br>
   
   {% if user_logged_in %}
