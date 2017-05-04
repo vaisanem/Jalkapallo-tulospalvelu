@@ -17,7 +17,7 @@
         } else {
             $person = self::get_user_logged_in();
             if ($person->mode == 0) {
-                Redirect::to('/asetukset', array('message' => 'Sinulla ei ole muokkausoikeuksia.'));
+                Redirect::to('/', array('message' => 'Yritit tehdä muutoksia, vaikka sinulla ei ole muokkausoikeuksia.'));
             }
         }
     }

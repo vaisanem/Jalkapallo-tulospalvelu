@@ -100,7 +100,7 @@ class LeagueController extends BaseController {
             $game->save();
             Redirect::to('/sarjat/' . $id, array('message' => 'Ottelutulos lisätty.'));
         } else {
-            Redirect::to('/sarjat/' . $id . 'ottelut/lisaa', array('message' => 'Joukkue ei voi pelata itseään vastaan.'));
+            Redirect::to('/sarjat/' . $id . '/ottelut/lisaa', array('message' => 'Joukkue ei voi pelata itseään vastaan.'));
         }
     }
     

@@ -2,8 +2,9 @@
 {% block content %}
 
   
-<h1 style="display: inline">{{team.name}}</h1> <a href="{{base_path}}/joukkueet/{{team.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
+<h1>{{team.name}}</h1>
   
+  <br>
   <br>
   <ul>
       {% if team.ground %}
@@ -12,6 +13,9 @@
       <li>Joukkueella ei ole kotikenttää</li>
       {% endif %}
   </ul>
+  <br>
+  
+  <a href="{{base_path}}/joukkueet/{{team.id}}/ottelut" class="btn btn-info">Otteluhistoria</a>
   <br>
   
   {% if user_logged_in %}
@@ -25,7 +29,6 @@
         </form>
         <a href="{{base_path}}/joukkueet/{{team.id}}/muokkaa" class="btn btn-default">Muokkaa</a>
     </p>
-    <br>
     <br>
     <br>
         <form method="post" action="{{base_path}}/joukkueet/{{team.id}}/lisaa/sarjaan">
