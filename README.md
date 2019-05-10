@@ -17,7 +17,7 @@ Oikeudeton käyttäjä
 Yleisiä linkkejä:
 
 * [Linkki sovellukseeni](https://vaisanem.users.cs.helsinki.fi/jtulospalvelu)
-* [Linkki dokumentaatiooni](https://github.com/vaisanem/Jalkapallotulospalvelu/tree/master/doc/dokumentaatio.pdf), joka laahaa hieman perässä nykyistä toteutusta  
+* [Linkki dokumentaatiooni](https://github.com/vaisanem/Jalkapallotulospalvelu/tree/master/doc/dokumentaatio.pdf)  
 
 
 ## Työn aihe
