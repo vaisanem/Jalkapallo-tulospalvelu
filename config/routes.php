@@ -77,7 +77,8 @@
   });
   
   $routes->get('/sarjat/:id', function($id) {
-      LeagueController::find($id);
+      $league_controller = new LeagueController();
+      $league_controller->find($id);
   });
   
   $routes->get('/joukkueet', function() {
