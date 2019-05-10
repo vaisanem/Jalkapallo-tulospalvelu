@@ -2,12 +2,12 @@
 
 class LeagueController extends BaseController {
     
-    public static function index() {
+    public function index() {
         $leagues = League::all();
         View::make('league/leagues.html', array('leagues' => $leagues));
     }
     
-    public static function find($id) {
+    public function find($id) {
         $league = League::find($id);
         $teams = Team::leagues_teams($id);
         $league_teams = array();
@@ -30,13 +30,13 @@ class LeagueController extends BaseController {
         View::make('league/league.html', array('league' => $league, 'teams' => $league_teams));
     }
     
-    public static function create() {
+    public function create() {
         self::check_logged_in();
         self::check_mode();
         View::make('league/add_league.html');
     }
 
-    public static function store() {
+    public function store() {
         $params = $_POST;
         $attributes = array('name' => $params['name']);
         $league = new League($attributes);
@@ -52,14 +52,14 @@ class LeagueController extends BaseController {
         }
     }
     
-    public static function edit($id) {
+    public function edit($id) {
         self::check_logged_in();
         self::check_mode();
         $league = League::find($id);
         View::make('league/edit_league.html', array('league' => $league));
     }
     
-    public static function update($id) {
+    public function update($id) {
         $params = $_POST;
         $attributes = array('id' => $id, 'name' => $params['name']);
         $league = new League($attributes);
@@ -75,12 +75,12 @@ class LeagueController extends BaseController {
         }
     }
     
-    public static function destroy($id) {
+    public function destroy($id) {
         League::destroy($id);
         Redirect::to('/sarjat', array('message' => 'Sarja on poistettu onnistuneesti.'));
     }
     
-    public static function add_game($id) {
+    public function add_game($id) {
         self::check_logged_in();
         self::check_mode();
         $league = League::find($id);
@@ -90,21 +90,25 @@ class LeagueController extends BaseController {
     
     public function store_game($id) {
         $params = $_POST;
-        $home_id = $params['home_team'];
-        $away_id = $params['away_team'];
-        if ($home_id != $away_id) {
-            $home_team = Team::find($home_id);
-            $away_team = Team::find($away_id);
-            $league = League::find($id);
-            $attributes = array('league' => $league->id, 'home_team' => $home_team->id,
-                'away_team' => $away_team->id, 'home_goals' => $params['home_goals'],
-                'away_goals' => $params['away_goals']);
-            $game = new Game($attributes);
-            $game->save();
-            Redirect::to('/sarjat/' . $id, array('message' => 'Ottelutulos lisätty.'));
+        if (isset($_POST['home_team']) && isset($_POST['away_team'])) {
+            $home_id = $params['home_team'];
+            $away_id = $params['away_team'];
+            if ($home_id != $away_id) {
+                $home_team = Team::find($home_id);
+                $away_team = Team::find($away_id);
+                $league = League::find($id);
+                $attributes = array('league' => $league->id, 'home_team' => $home_team->id,
+                    'away_team' => $away_team->id, 'home_goals' => $params['home_goals'],
+                    'away_goals' => $params['away_goals']);
+                $game = new Game($attributes);
+                $game->save();
+                Redirect::to('/sarjat/' . $id, array('message' => 'Ottelutulos lisätty.'));
+            } else {
+                Redirect::to('/sarjat/' . $id . '/ottelut/lisaa', array('message' => 'Joukkue ei voi pelata itseään vastaan.'));
+            }
         } else {
-            Redirect::to('/sarjat/' . $id . '/ottelut/lisaa', array('message' => 'Joukkue ei voi pelata itseään vastaan.'));
-        }
+            Redirect::to('/sarjat/' . $id . '/ottelut/lisaa', array('message' => 'Sarjassa ei ole riittävästi joukkueita.'));
+        }    
     }
     
 }

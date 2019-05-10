@@ -2,12 +2,12 @@
 require 'app/models/team.php';
 class TeamController extends BaseController {
     
-    public static function index() {
+    public function index() {
         $teams = team::all();
         View::make('team/teams.html', array('teams' => $teams));
     }
     
-    public static function find($id) {
+    public function find($id) {
         $team = Team::find($id);
         $teams_leagues = League::teams_leagues($id);
         $leagues_for_team = League::leagues_for_team($id);
@@ -16,13 +16,13 @@ class TeamController extends BaseController {
             'leagues_for_team' => $leagues_for_team, 'games' => $games));
     }
     
-    public static function create() {
+    public function create() {
         self::check_logged_in();
         self::check_mode();
         View::make('team/add_team.html');
     }
     
-    public static function store() {
+    public function store() {
         $params = $_POST;
         $attributes = array('name' => $params['name'], 'ground' => $params['ground']);
         $team = new Team($attributes);
@@ -38,14 +38,14 @@ class TeamController extends BaseController {
         }
     }
     
-    public static function edit($id) {
+    public function edit($id) {
         self::check_logged_in();
         self::check_mode();
         $team = Team::find($id);
         View::make('team/edit_team.html', array('attributes' => $team));
     }
     
-    public static function update($id) {
+    public function update($id) {
         $params = $_POST;
         $attributes = array('id' => $id, 'name' => $params['name'], 'ground' => $params['ground']);
         $team = new Team($attributes);
@@ -61,12 +61,12 @@ class TeamController extends BaseController {
         }
     }
     
-    public static function destroy($id) {
+    public function destroy($id) {
         Team::destroy($id);
         Redirect::to('/joukkueet', array('message' => 'Joukkue on poistettu onnistuneesti.'));
     }
     
-    public static function add_to_league($id) {
+    public function add_to_league($id) {
         $league_id = $_POST['league'];
         $team = Team::find($id);
         $team->add_to_league($league_id);
