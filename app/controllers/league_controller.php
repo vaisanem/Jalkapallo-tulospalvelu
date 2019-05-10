@@ -2,12 +2,12 @@
 
 class LeagueController extends BaseController {
     
-    public function index() {
+    public static function index() {
         $leagues = League::all();
         View::make('league/leagues.html', array('leagues' => $leagues));
     }
     
-    public function find($id) {
+    public static function find($id) {
         $league = League::find($id);
         $teams = Team::leagues_teams($id);
         $league_teams = array();
@@ -30,13 +30,13 @@ class LeagueController extends BaseController {
         View::make('league/league.html', array('league' => $league, 'teams' => $league_teams));
     }
     
-    public function create() {
+    public static function create() {
         self::check_logged_in();
         self::check_mode();
         View::make('league/add_league.html');
     }
 
-    public function store() {
+    public static function store() {
         $params = $_POST;
         $attributes = array('name' => $params['name']);
         $league = new League($attributes);
@@ -52,14 +52,14 @@ class LeagueController extends BaseController {
         }
     }
     
-    public function edit($id) {
+    public static function edit($id) {
         self::check_logged_in();
         self::check_mode();
         $league = League::find($id);
         View::make('league/edit_league.html', array('league' => $league));
     }
     
-    public function update($id) {
+    public static function update($id) {
         $params = $_POST;
         $attributes = array('id' => $id, 'name' => $params['name']);
         $league = new League($attributes);
@@ -75,12 +75,12 @@ class LeagueController extends BaseController {
         }
     }
     
-    public function destroy($id) {
+    public static function destroy($id) {
         League::destroy($id);
         Redirect::to('/sarjat', array('message' => 'Sarja on poistettu onnistuneesti.'));
     }
     
-    public function add_game($id) {
+    public static function add_game($id) {
         self::check_logged_in();
         self::check_mode();
         $league = League::find($id);
@@ -88,7 +88,7 @@ class LeagueController extends BaseController {
         View::make('league/add_game.html', array('league' => $league, 'teams' => $teams));
     }
     
-    public function store_game($id) {
+    public static function store_game($id) {
         $params = $_POST;
         if (isset($_POST['home_team']) && isset($_POST['away_team'])) {
             $home_id = $params['home_team'];

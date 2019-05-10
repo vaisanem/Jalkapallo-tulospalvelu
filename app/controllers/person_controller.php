@@ -6,7 +6,7 @@ class PersonController extends BaseController {
         View::make('person/login.html');
     }
     
-    public function handle_login() {
+    public static function handle_login() {
         $params = $_POST;
         
         $person = Person::authenticate($params['name'], $params['password']);
@@ -22,7 +22,7 @@ class PersonController extends BaseController {
         }
     }
     
-    public function logout() {
+    public static function logout() {
         $_SESSION['person'] = null;
         Redirect::to('/', array('message' => 'Olet kirjautunut ulos.'));
     }
@@ -31,7 +31,7 @@ class PersonController extends BaseController {
         View::make('person/register.html');
     }
     
-    public function handle_register() {
+    public static function handle_register() {
         $params = $_POST;
         
         $attributes = array('name' => $params['name'], 'password' => $params['password']);
@@ -48,20 +48,20 @@ class PersonController extends BaseController {
         }
     }
     
-    public function settings() {
+    public static function settings() {
         self::check_logged_in();
         $persons = Person::all();
         View::make('person/settings.html', array('persons' => $persons));
     }
     
-    public function give_rights($id) {
+    public static function give_rights($id) {
         $person = Person::find($id);
         $rights = 1;
         $person->rights($rights);
         Redirect::to('/asetukset', array('message' => 'Oikeudet annettu.'));
     }
     
-    public function take_rights($id) {
+    public static function take_rights($id) {
         $person = Person::find($id);
         $rights = 0;
         $person->rights($rights);
