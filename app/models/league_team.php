@@ -8,7 +8,7 @@ class LeagueTeam extends BaseModel {
         parent::__construct($attributes);
     }
     
-    public function mysort($a, $b) {
+    public static function mysort($a, $b) {
         if ($a instanceof LeagueTeam && $b instanceof LeagueTeam) {
             if ($a->points > $b->points) {
                 return -1;
